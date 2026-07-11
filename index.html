@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessie Family Reunion 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-yellow': '#FFD166',
+                        'brand-teal': '#06D6A0',
+                        'brand-pink': '#EF476F',
+                        'brand-blue': '#118AB2',
+                        'brand-navy': '#073B4C'
+                    },
+                    fontFamily: {
+                        'header': ['"Fredoka One"', 'cursive'],
+                        'body': ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, .nav-brand {
+            font-family: '"Fredoka One"', cursive;
+        }
+
+        /* Fun floating animation for the hero section */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .float-anim-delayed {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* Wavy divider */
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+
+        .custom-shape-divider-bottom .shape-fill {
+            fill: #f8f9fa;
+        }
+
+        /* Polaroid style image cards */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(2deg) scale(1.05);
+            z-index: 10;
+        }
+        
+        .polaroid:nth-child(even) {
+            transform: rotate(3deg);
+        }
+        
+        .polaroid:nth-child(even):hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-brand-navy antialiased">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="nav-brand text-3xl text-brand-pink tracking-wider">Jessie<span class="text-brand-blue">Fest</span> '26</a>
+                <div class="hidden md:flex space-x-8 font-bold">
+                    <a href="#details" class="text-brand-navy hover:text-brand-teal transition">The Details</a>
+                    <a href="#schedule" class="text-brand-navy hover:text-brand-yellow transition">Schedule</a>
+                    <a href="#lodging" class="text-brand-navy hover:text-brand-pink transition">Where to Stay</a>
+                    <a href="#rsvp" class="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-brand-navy transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">RSVP Now</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class="w-6 h-6 text-brand-navy" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-brand-teal pt-20 pb-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <div class="inline-block bg-brand-yellow text-brand-navy font-bold px-4 py-1 rounded-full mb-4 transform -rotate-2">It's finally happening!</div>
+                <h1 class="text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-md">The Great Jessie Family Reunion</h1>
+                <p class="text-xl text-white font-bold mb-8 drop-shadow-sm">August 14-16, 2026 &bull; Lake Tahoe, CA</p>
+                <a href="#rsvp" class="inline-block bg-brand-pink text-white text-xl font-header px-8 py-4 rounded-full hover:bg-white hover:text-brand-pink transition shadow-xl transform hover:scale-105">Count Us In! 🎉</a>
+            </div>
+            
+            <div class="md:w-1/2 relative h-80 w-full flex justify-center items-center">
+                <!-- Decorative Elements -->
+                <div class="absolute w-40 h-40 bg-brand-yellow rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse top-0 right-10"></div>
+                <div class="absolute w-40 h-40 bg-brand-pink rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse bottom-0 left-10" style="animation-delay: 2s;"></div>
+                
+                <!-- Fun Placeholder Images -->
+                <div class="relative w-full max-w-sm">
+                   <div class="polaroid absolute top-0 left-0 float-anim z-20">
+                       <img src="https://placehold.co/300x250/118AB2/FFFFFF?text=Uncle+Bob's+BBQ" alt="BBQ" class="w-full h-auto">
+                   </div>
+                   <div class="polaroid absolute top-10 left-20 float-anim-delayed z-10">
+                       <img src="https://placehold.co/300x250/EF476F/FFFFFF?text=Cousin+Shenanigans" alt="Family" class="w-full h-auto">
+                   </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wavy Bottom -->
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.3,191.2,99.87,238.13,84.7,279.7,70.93,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <section id="details" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl text-brand-navy mb-4">The Need-to-Know</h2>
+                <div class="w-24 h-2 bg-brand-yellow mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Info Card 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg text-center transform transition hover:-translate-y-2 border-t-8 border-brand-teal">
+                    <div class="w-16 h-16 bg-brand-teal text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-6">📍</div>
+                    <h3 class="text-2xl mb-3">Where is it?</h3>
+                    <p class="text-gray-600 mb-4">Camp Richardson Resort<br>Lake Tahoe, California</p>
+                    <p class="text-sm text-gray-500">We've rented out the large group campground and several nearby cabins.</p>
+                </div>
+                
+                <!-- Info Card 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg text-center transform transition hover:-translate-y-2 border-t-8 border-brand-pink">
+                    <div class="w-16 h-16 bg-brand-pink text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-6">🍔</div>
+                    <h3 class="text-2xl mb-3">What about food?</h3>
+                    <p class="text-gray-600 mb-4">Dinners are provided!<br>Bring your own breakfast/lunch.</p>
+                    <p class="text-sm text-gray-500">We are doing a massive potluck on Saturday night. Sign-up sheet coming soon!</p>
+                </div>
+                
+                <!-- Info Card 3 -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg text-center transform transition hover:-translate-y-2 border-t-8 border-brand-blue">
+                    <div class="w-16 h-16 bg-brand-blue text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-6">💰</div>
+                    <h3 class="text-2xl mb-3">What's the cost?</h3>
+                    <p class="text-gray-600 mb-4">$50 per adult<br>$25 per kid (under 12)</p>
+                    <p class="text-sm text-gray-500">This covers the campsite reservation, Friday pizza party, and reunion t-shirts!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl text-brand-navy mb-4">The Game Plan</h2>
+                <p class="text-gray-600 font-bold">Everything is optional, but fun is mandatory.</p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Friday -->
+                <div class="flex flex-col md:flex-row bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                    <div class="bg-brand-yellow md:w-1/4 p-6 flex flex-col justify-center items-center text-brand-navy">
+                        <span class="text-3xl font-header">Friday</span>
+                        <span class="font-bold">August 14</span>
+                    </div>
+                    <div class="p-6 md:w-3/4">
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">3:00 PM</span>
+                                <span class="text-gray-700">Check-in at the campground. Grab your t-shirts!</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">6:00 PM</span>
+                                <span class="text-gray-700">Welcome Pizza Party & Meet the New Babies 🍕</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">8:00 PM</span>
+                                <span class="text-gray-700">Campfire stories and s'mores</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Saturday -->
+                <div class="flex flex-col md:flex-row bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                    <div class="bg-brand-teal md:w-1/4 p-6 flex flex-col justify-center items-center text-white">
+                        <span class="text-3xl font-header">Saturday</span>
+                        <span class="font-bold">August 15</span>
+                    </div>
+                    <div class="p-6 md:w-3/4">
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">10:00 AM</span>
+                                <span class="text-gray-700">The Annual Jessie Family Water Balloon Toss 🎈</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">12:00 PM</span>
+                                <span class="text-gray-700">Free time! Beach, hike, or nap.</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">5:00 PM</span>
+                                <span class="text-gray-700">Group Photo! Wear your reunion shirts! 📸</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-bold w-24 flex-shrink-0 text-brand-navy">6:00 PM</span>
+                                <span class="text-gray-700">The Ultimate Family Potluck Dinner</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp" class="py-20 bg-brand-navy text-white relative overflow-hidden">
+        <!-- Decorative circles -->
+        <div class="absolute w-64 h-64 bg-brand-blue rounded-full opacity-20 -top-20 -right-20"></div>
+        <div class="absolute w-40 h-40 bg-brand-pink rounded-full opacity-20 bottom-10 -left-10"></div>
+        
+        <div class="max-w-3xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl text-brand-yellow mb-4">Are you coming?</h2>
+                <p class="text-lg">Please let us know by July 1st so we can finalize numbers.</p>
+            </div>
+            
+            <form class="bg-white text-brand-navy p-8 rounded-3xl shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block font-bold mb-2 text-sm" for="name">Family Name (Who is coming?)</label>
+                        <input type="text" id="name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal" placeholder="e.g., John & Jane Doe">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2 text-sm" for="email">Email Address</label>
+                        <input type="email" id="email" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal" placeholder="johndoe@example.com">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                    <div class="col-span-2">
+                        <label class="block font-bold mb-2 text-sm">Will you be there?</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                            <option>Yes, wouldn't miss it!</option>
+                            <option>Sadly, we can't make it.</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2 text-sm"># Adults</label>
+                        <input type="number" min="0" value="0" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2 text-sm"># Kids (0-12)</label>
+                        <input type="number" min="0" value="0" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block font-bold mb-2 text-sm">Dietary Restrictions or Questions?</label>
+                    <textarea class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 h-24 focus:outline-none focus:ring-2 focus:ring-brand-teal" placeholder="Let us know..."></textarea>
+                </div>
+                
+                <button type="button" class="w-full bg-brand-pink text-white font-header text-xl py-4 rounded-xl hover:bg-opacity-90 transition shadow-lg transform hover:-translate-y-1">
+                    Send RSVP
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="font-header text-2xl text-white mb-4">Jessie<span class="text-brand-blue">Fest</span> '26</p>
+            <p>Made with ❤️ for the family.</p>
+            <p class="text-sm mt-4">Questions? Call Aunt Sarah at (555) 123-4567</p>
+        </div>
+    </footer>
+
+</body>
+</html>
