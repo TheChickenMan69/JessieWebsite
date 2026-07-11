@@ -1,76 +1,431 @@
-<!-- Attraction Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="attractions-grid">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Vegas Family Vacation 2027</title>
 
-    <!-- Card 1: Bellagio Fountains -->
-    <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family">
-        <img src="https://picsum.photos/id/122/500/300" alt="Bellagio Fountains" class="w-full h-48 object-cover">
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl font-bold dark:text-white">Bellagio Fountains</h3>
-                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
-            </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Iconic choreographed water feature set to music. A must-see Vegas classic.</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
-                <div>📍 On Strip</div>
-                <div>🕒 15-30 mins</div>
-                <div>👨‍👩‍👧‍👦 All Ages</div>
-                <div>♿ Accessible</div>
+    <!-- Google Fonts for Elegant Resort Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'resort-blue': '#0B2545',
+                        'resort-gold': '#C5A059',
+                        'resort-tan': '#E6D5B8',
+                        'resort-orange': '#E07A5F',
+                        'resort-light': '#F8F9FA',
+                        'resort-dark': '#1A1A1A'
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Subtle fade-in animation for elements */
+        .fade-in {
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphism for floating UI elements */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .dark .glass {
+            background: rgba(26, 26, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Image Overlay */
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(11, 37, 69, 0.4), rgba(11, 37, 69, 0.8)), url('https://images.unsplash.com/photo-1605810730419-450f36f6d0f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-resort-light text-resort-blue dark:bg-resort-dark dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl md:text-3xl font-bold tracking-wider text-resort-blue dark:text-resort-gold">
+                        Family <span class="italic font-light">Vacation '27</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center font-sans text-sm tracking-wide">
+                    <a href="#schedule" class="hover:text-resort-gold transition">Schedule</a>
+                    <a href="#explore" class="hover:text-resort-gold transition">Things To Do</a>
+                    <a href="#dining" class="hover:text-resort-gold transition">Restaurants</a>
+                    <a href="#faq" class="hover:text-resort-gold transition">FAQ</a>
+                    <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        🌓
+                    </button>
+                    <a href="#rsvp" class="bg-resort-gold text-white px-6 py-2 rounded shadow hover:bg-yellow-600 transition">RSVP</a>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Card 2: Red Rock Canyon -->
-    <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
-        <img src="https://picsum.photos/id/1015/500/300" alt="Red Rock Canyon" class="w-full h-48 object-cover">
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl font-bold dark:text-white">Red Rock Canyon</h3>
-                <span class="bg-resort-gold text-white text-xs px-2 py-1 rounded font-bold">$20/Vehicle</span>
-            </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Stunning desert landscapes just outside the city. Great for a scenic drive or morning hike.</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
-                <div>📍 30m from Strip</div>
-                <div>🕒 2-4 hours</div>
-                <div>👟 Walking req.</div>
-                <div>☀️ Best AM</div>
+    <!-- Hero Section -->
+    <header class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center px-4 fade-in z-10 mt-16">
+            <h2 class="text-resort-gold font-sans tracking-[0.2em] text-sm md:text-base uppercase mb-4 shadow-sm">May 13 - 17, 2027 • Las Vegas, Nevada</h2>
+            <h1 class="text-5xl md:text-7xl text-white font-serif font-bold mb-6 leading-tight">Welcome to the 2027<br><span class="italic text-resort-gold">Family Vacation</span></h1>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                <a href="#rsvp" class="bg-resort-gold text-white font-sans tracking-wide px-8 py-3 rounded hover:bg-yellow-600 transition">RSVP Now</a>
+                <a href="#schedule" class="bg-transparent border border-white text-white font-sans tracking-wide px-8 py-3 rounded hover:bg-white hover:text-resort-blue transition">View Itinerary</a>
             </div>
         </div>
-    </div>
 
-    <!-- Card 3: Summerlin Paintball -->
-    <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family outdoor">
-        <img src="https://picsum.photos/id/1058/500/300" alt="Summerlin Paintball" class="w-full h-48 object-cover">
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl font-bold dark:text-white">Summerlin Paintball</h3>
-                <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+        <!-- Floating Widgets (Countdown & Weather) -->
+        <div class="absolute bottom-10 left-0 w-full flex flex-col md:flex-row justify-center gap-6 px-4">
+            <div class="glass rounded-lg p-4 text-center min-w-[200px]">
+                <p class="text-xs uppercase tracking-widest mb-2 font-bold dark:text-gray-300">Countdown</p>
+                <div id="countdown" class="font-serif text-2xl text-resort-blue dark:text-resort-gold">Loading...</div>
             </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Get the family together for some friendly competition! Great outdoor action.</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
-                <div>📍 Summerlin</div>
-                <div>🕒 2-3 hours</div>
-                <div>🎯 Teens/Adults</div>
-                <div>🏃‍♂️ Active</div>
+            <div class="glass rounded-lg p-4 text-center min-w-[200px]">
+                <p class="text-xs uppercase tracking-widest mb-2 font-bold dark:text-gray-300">Vegas Weather (May avg)</p>
+                <div class="font-serif text-2xl text-resort-blue dark:text-resort-gold">☀️ 88° / 60°</div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Card 4: AREA15 -->
-    <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="adults">
-        <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=500&q=80" alt="AREA15" class="w-full h-48 object-cover">
-        <div class="p-6">
-            <div class="flex justify-between items-start mb-2">
-                <h3 class="font-serif text-xl font-bold dark:text-white">AREA15 / Omega Mart</h3>
-                <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
+    <!-- Interactive Schedule -->
+    <section id="schedule" class="py-24 max-w-5xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl mb-4 dark:text-white">Event Schedule</h2>
+            <div class="w-16 h-1 bg-resort-gold mx-auto"></div>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Day 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow border-l-4 border-resort-blue p-6 hover:shadow-md transition">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 mb-4">
+                    <div>
+                        <h3 class="font-serif text-2xl dark:text-white">Welcome Reception</h3>
+                        <p class="text-resort-orange font-bold">Thursday, May 13</p>
+                    </div>
+                    <div class="text-left md:text-right mt-2 md:mt-0">
+                        <p class="font-sans font-bold">6:00 PM - 9:00 PM</p>
+                        <p class="text-sm text-gray-500">Resort Cabana / Poolside</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Check in, grab your welcome bags, and join us for cocktails and light appetizers to kick off the weekend.</p>
+                <div class="flex gap-4 text-sm font-sans text-gray-500">
+                    <span>👕 Resort Casual</span>
+                    <span>🚗 Valet Validated</span>
+                </div>
             </div>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Immersive, mind-bending art and entertainment complex. 21+ after dark.</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
-                <div>📍 Off Strip</div>
-                <div>🕒 2-4 hours</div>
-                <div>🍸 Drinks available</div>
-                <div>🎫 Res Required</div>
+
+            <!-- Day 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow border-l-4 border-resort-gold p-6 hover:shadow-md transition">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 mb-4">
+                    <div>
+                        <h3 class="font-serif text-2xl dark:text-white">Family Dinner Banquet</h3>
+                        <p class="text-resort-orange font-bold">Friday, May 14</p>
+                    </div>
+                    <div class="text-left md:text-right mt-2 md:mt-0">
+                        <p class="font-sans font-bold">7:00 PM - 10:00 PM</p>
+                        <p class="text-sm text-gray-500">Main Ballroom</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">The main event! Enjoy a fully catered dinner, slideshow presentations, and sharing memories.</p>
+                <div class="flex gap-4 text-sm font-sans text-gray-500">
+                    <span>👔 Cocktail Attire</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-</div>
+    <!-- Things To Do (Filterable) -->
+    <section id="explore" class="py-24 bg-resort-tan dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl mb-4 text-resort-blue dark:text-white">Things To Do in Vegas</h2>
+                <div class="w-16 h-1 bg-resort-gold mx-auto mb-8"></div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-3 font-sans text-sm">
+                    <button class="filter-btn active bg-resort-blue text-white px-4 py-2 rounded" data-filter="all">All</button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-50 transition" data-filter="free">Free</button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-50 transition" data-filter="outdoor">Outdoor</button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-50 transition" data-filter="family">Family/Kids</button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-50 transition" data-filter="adults">Adults/Nightlife</button>
+                </div>
+            </div>
+
+            <!-- Attraction Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="attractions-grid">
+
+                <!-- Card 1 -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family">
+                    <img src="https://picsum.photos/id/122/500/300" alt="Bellagio Fountains" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Bellagio Fountains</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Iconic choreographed water feature set to music. A must-see Vegas classic.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                            <div>📍 On Strip</div>
+                            <div>🕒 15-30 mins</div>
+                            <div>👨‍👩‍👧‍👦 All Ages</div>
+                            <div>♿ Accessible</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
+                    <img src="https://picsum.photos/id/1015/500/300" alt="Red Rock Canyon" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Red Rock Canyon</h3>
+                            <span class="bg-resort-gold text-white text-xs px-2 py-1 rounded font-bold">$20/Vehicle</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Stunning desert landscapes just outside the city. Great for a scenic drive or morning hike.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                            <div>📍 30m from Strip</div>
+                            <div>🕒 2-4 hours</div>
+                            <div>👟 Walking req.</div>
+                            <div>☀️ Best AM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family outdoor">
+                    <img src="https://picsum.photos/id/1058/500/300" alt="Summerlin Paintball" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Summerlin Paintball</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Get the family together for some friendly competition! Great outdoor action.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                            <div>📍 Summerlin</div>
+                            <div>🕒 2-3 hours</div>
+                            <div>🎯 Teens/Adults</div>
+                            <div>🏃‍♂️ Active</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="adults">
+                    <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=500&q=80" alt="AREA15" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">AREA15 / Omega Mart</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Immersive, mind-bending art and entertainment complex. 21+ after dark.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                            <div>📍 Off Strip</div>
+                            <div>🕒 2-4 hours</div>
+                            <div>🍸 Drinks available</div>
+                            <div>🎫 Res Required</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section Snapshot -->
+    <section id="dining" class="py-24 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl mb-4 dark:text-white">Dining Highlights</h2>
+            <div class="w-16 h-1 bg-resort-gold mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=300&q=80" alt="Benihana" class="w-1/3 object-cover">
+                <div class="p-6 w-2/3">
+                    <h3 class="font-serif text-xl font-bold mb-1 dark:text-white">Benihana</h3>
+                    <p class="text-xs text-resort-orange font-bold uppercase mb-2">Hibachi / Groups</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">A family favorite. Dinner and a show right at your table. Perfect for large parties.</p>
+                </div>
+            </div>
+            <div class="flex bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=300&q=80" alt="Fine Dining" class="w-1/3 object-cover">
+                <div class="p-6 w-2/3">
+                    <h3 class="font-serif text-xl font-bold mb-1 dark:text-white">Top of the World</h3>
+                    <p class="text-xs text-resort-orange font-bold uppercase mb-2">Fine Dining / Steakhouse</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Located in The STRAT. Revolving restaurant with 360-degree views of the Vegas Valley.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-24 bg-resort-blue text-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl mb-4 text-resort-gold">RSVP</h2>
+                <p class="font-sans text-gray-300">Please let us know if you'll be joining us by March 1st, 2027.</p>
+            </div>
+
+            <form class="bg-white/10 p-8 rounded-lg backdrop-blur-sm border border-white/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-sans mb-2">Family Name</label>
+                        <input type="text" class="w-full bg-white/90 text-resort-blue rounded p-3 outline-none focus:ring-2 focus:ring-resort-gold" placeholder="e.g. Your Family Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-sans mb-2">Email</label>
+                        <input type="email" class="w-full bg-white/90 text-resort-blue rounded p-3 outline-none focus:ring-2 focus:ring-resort-gold">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-sans mb-2">Attending?</label>
+                        <select class="w-full bg-white/90 text-resort-blue rounded p-3 outline-none focus:ring-2 focus:ring-resort-gold">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-sans mb-2">Adults</label>
+                        <input type="number" min="0" value="0" class="w-full bg-white/90 text-resort-blue rounded p-3 outline-none focus:ring-2 focus:ring-resort-gold">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-sans mb-2">Kids</label>
+                        <input type="number" min="0" value="0" class="w-full bg-white/90 text-resort-blue rounded p-3 outline-none focus:ring-2 focus:ring-resort-gold">
+                    </div>
+                </div>
+
+                <button type="button" class="w-full bg-resort-gold hover:bg-yellow-600 text-white font-bold py-4 rounded transition tracking-wider uppercase text-sm mt-4">
+                    Submit RSVP
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-resort-dark text-gray-400 py-12 text-center font-sans text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="font-serif text-2xl text-white mb-4">Las Vegas Family Vacation '27</p>
+            <p class="mb-4">Need help planning? Questions about lodging?</p>
+            <p class="text-resort-gold">Contact the Organizer</p>
+            <p class="mt-8 text-xs opacity-50">© 2027 Family Event Planners</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // --- Countdown Timer ---
+        const eventDate = new Date("May 13, 2027 15:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        const updateCountdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                countdownElement.innerHTML = "It's Vacation Time!";
+            } else {
+                countdownElement.innerHTML = `${days}d ${hours}h`;
+            }
+        }, 1000);
+
+        // --- Dark Mode Toggle ---
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+
+        // --- Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('glass', 'bg-white');
+                if(html.classList.contains('dark')) {
+                    navbar.classList.replace('bg-white', 'bg-gray-900');
+                }
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-white', 'bg-gray-900');
+                navbar.classList.add('glass');
+            }
+        });
+
+        // --- Things To Do Filter Logic ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.attraction-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-resort-blue', 'text-white');
+                    b.classList.add('bg-white', 'dark:bg-gray-800', 'text-resort-blue', 'dark:text-white');
+                });
+
+                // Add active styling to clicked button
+                btn.classList.remove('bg-white', 'dark:bg-gray-800', 'text-resort-blue', 'dark:text-white');
+                btn.classList.add('bg-resort-blue', 'text-white');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+                        card.style.display = 'block';
+                        // brief animation reset
+                        card.style.animation = 'none';
+                        card.offsetHeight; /* trigger reflow */
+                        card.style.animation = null;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
