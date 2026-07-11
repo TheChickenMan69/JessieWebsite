@@ -250,28 +250,35 @@
                 <div class="w-16 h-1 bg-resort-gold mx-auto mb-8"></div>
                 
                 <!-- Filters -->
-                <div class="flex flex-wrap justify-center gap-3 font-sans text-sm">
+                <div class="flex flex-wrap justify-center gap-3 font-sans text-sm mb-10">
                     <button class="filter-btn active bg-resort-blue text-white px-4 py-2 rounded" data-filter="all">
                         <span class="en">All</span><span class="es">Todo</span>
                     </button>
-                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow" data-filter="free">
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-100 transition" data-filter="free">
                         <span class="en">Free</span><span class="es">Gratis</span>
                     </button>
-                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow" data-filter="family">
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-100 transition" data-filter="outdoor">
+                        <span class="en">Outdoor</span><span class="es">Al Aire Libre</span>
+                    </button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-100 transition" data-filter="family">
                         <span class="en">Family/Kids</span><span class="es">Familia/Niños</span>
+                    </button>
+                    <button class="filter-btn bg-white dark:bg-gray-800 text-resort-blue dark:text-white px-4 py-2 rounded shadow hover:bg-gray-100 transition" data-filter="teens">
+                        <span class="en">Teens/Adults</span><span class="es">Adolescentes/Adultos</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Attraction Grid (Abbreviated for structure) -->
+            <!-- Attraction Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="attractions-grid">
                 
-                <!-- Card 1 -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-category="free family">
+                <!-- Card 1: Bellagio Fountains -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family outdoor">
                     <img src="https://picsum.photos/id/122/500/300" alt="Bellagio Fountains" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-xl font-bold dark:text-white">Bellagio Fountains</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                             <span class="en">Iconic choreographed water feature set to music. A must-see Vegas classic.</span>
@@ -280,12 +287,13 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-category="free family">
+                <!-- Card 2: Bellagio Conservatory -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family">
                     <img src="https://picsum.photos/id/106/500/300" alt="Bellagio Conservatory" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-xl font-bold dark:text-white">Bellagio Conservatory</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                             <span class="en">Breathtaking indoor botanical gardens that change completely with the seasons.</span>
@@ -294,12 +302,13 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-category="free family">
+                <!-- Card 3: Seven Magic Mountains -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family outdoor">
                     <img src="https://picsum.photos/id/140/500/300" alt="Seven Magic Mountains" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="font-serif text-xl font-bold dark:text-white">Seven Magic Mountains</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                             <span class="en">A colorful, large-scale public art installation in the desert just south of Vegas.</span>
@@ -307,6 +316,187 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Card 4: Fremont Street -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free outdoor teens">
+                    <img src="https://picsum.photos/id/137/500/300" alt="Fremont Street" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Fremont Street</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Massive LED canopy light shows, street performers, and classic downtown Vegas energy.</span>
+                            <span class="es">Masivos espectáculos de luces en el dosel LED, artistas callejeros y la clásica energía del centro.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Pinball Hall of Fame -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family teens">
+                    <img src="https://picsum.photos/id/96/500/300" alt="Pinball Hall of Fame" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Pinball Hall of Fame</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free Entry</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Hundreds of vintage pinball machines and arcades. Entry is free, games cost quarters.</span>
+                            <span class="es">Cientos de máquinas de pinball vintage. La entrada es gratis, los juegos cuestan monedas.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Red Rock Canyon -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
+                    <img src="https://picsum.photos/id/1015/500/300" alt="Red Rock Canyon" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Red Rock Canyon</h3>
+                            <span class="bg-resort-gold text-white text-xs px-2 py-1 rounded font-bold">$20/Vehicle</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Stunning desert landscapes just outside the city. Great for a scenic drive or morning hike.</span>
+                            <span class="es">Impresionantes paisajes desérticos a las afueras de la ciudad. Genial para un paseo panorámico o caminata.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 7: Valley of Fire -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
+                    <img src="https://picsum.photos/id/1040/500/300" alt="Valley of Fire" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Valley of Fire</h3>
+                            <span class="bg-resort-gold text-white text-xs px-2 py-1 rounded font-bold">$15/Vehicle</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Nevada's oldest state park features world-renowned bright red Aztec sandstone formations.</span>
+                            <span class="es">El parque estatal más antiguo de Nevada presenta formaciones de arenisca azteca de color rojo brillante.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 8: Hoover Dam -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family teens">
+                    <img src="https://picsum.photos/id/164/500/300" alt="Hoover Dam" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Hoover Dam</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free to Walk</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">A marvel of modern engineering. Walk across the top for free, or pay for guided interior tours.</span>
+                            <span class="es">Una maravilla de la ingeniería moderna. Camina por la parte superior gratis o paga por recorridos interiores.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 9: Shark Reef Aquarium -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family">
+                    <img src="https://picsum.photos/id/283/500/300" alt="Shark Reef" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Shark Reef Aquarium</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Located at Mandalay Bay, featuring thousands of marine animals and a shipwreck tunnel.</span>
+                            <span class="es">Ubicado en Mandalay Bay, con miles de animales marinos y un túnel de naufragio.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 10: Discovery Children's Museum -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family">
+                    <img src="https://picsum.photos/id/212/500/300" alt="Discovery Museum" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Discovery Museum</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Three stories of interactive, hands-on exhibits perfect for toddlers through pre-teens.</span>
+                            <span class="es">Tres pisos de exhibiciones interactivas, perfectas para niños pequeños hasta preadolescentes.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 11: The Sphere -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family teens">
+                    <img src="https://picsum.photos/id/1050/500/300" alt="The Sphere" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">The Sphere</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">A revolutionary entertainment venue offering immersive cinematic experiences and concerts.</span>
+                            <span class="es">Un lugar de entretenimiento revolucionario que ofrece experiencias inmersivas y conciertos.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 12: High Roller -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family teens outdoor">
+                    <img src="https://picsum.photos/id/128/500/300" alt="High Roller" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">High Roller</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">North America's tallest observation wheel offers sweeping 360-degree views of the Vegas valley.</span>
+                            <span class="es">La rueda de observación más alta de Norteamérica ofrece amplias vistas de 360 grados del valle.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 13: The Neon Museum -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family teens">
+                    <img src="https://picsum.photos/id/175/500/300" alt="Neon Museum" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">The Neon Museum</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">The "Neon Boneyard" preserves iconic Las Vegas signs. Stunning at sunset or night.</span>
+                            <span class="es">El "Neon Boneyard" conserva letreros icónicos de Las Vegas. Impresionante al atardecer o de noche.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 14: Fly LINQ Zipline -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor teens">
+                    <img src="https://picsum.photos/id/1039/500/300" alt="Fly LINQ Zipline" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">Fly LINQ Zipline</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Soar 12 stories above the LINQ Promenade. A quick thrill right in the middle of the Strip.</span>
+                            <span class="es">Vuela 12 pisos sobre el LINQ Promenade. Una emoción rápida en el medio del Strip.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 15: AREA15 -->
+                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="teens">
+                    <img src="https://picsum.photos/id/1073/500/300" alt="AREA15" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold dark:text-white">AREA15 / Omega Mart</h3>
+                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            <span class="en">Immersive, mind-bending art and entertainment complex. Great for teens and adults.</span>
+                            <span class="es">Complejo de arte y entretenimiento inmersivo y alucinante. Genial para adolescentes y adultos.</span>
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
