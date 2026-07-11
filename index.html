@@ -94,10 +94,14 @@
                         <span class="en">Things To Do</span><span class="es">Qué Hacer</span>
                     </a>
                     
-                    <!-- Language Toggles -->
-                    <div class="flex items-center space-x-2 border-l border-gray-300 dark:border-gray-600 pl-4">
-                        <button onclick="setLanguage('en')" class="text-xl hover:scale-110 transition" title="English">🇺🇸</button>
-                        <button onclick="setLanguage('es')" class="text-xl hover:scale-110 transition" title="Español">🇲🇽</button>
+                    <!-- Language Toggles (Using Image Flags) -->
+                    <div class="flex items-center space-x-3 border-l border-gray-300 dark:border-gray-600 pl-4">
+                        <button onclick="setLanguage('en')" class="hover:scale-110 transition focus:outline-none" title="English">
+                            <img src="https://flagcdn.com/w40/us.png" width="24" alt="US Flag" class="rounded-sm shadow-sm">
+                        </button>
+                        <button onclick="setLanguage('es')" class="hover:scale-110 transition focus:outline-none" title="Español">
+                            <img src="https://flagcdn.com/w40/mx.png" width="24" alt="Mexico Flag" class="rounded-sm shadow-sm">
+                        </button>
                     </div>
 
                     <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
