@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Las Vegas Family Vacation 2027</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -71,7 +69,6 @@
 </head>
 <body class="lang-en bg-resort-light text-resort-blue dark:bg-resort-dark dark:text-gray-200 transition-colors duration-300">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -82,7 +79,6 @@
                     </a>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6 items-center font-sans text-sm tracking-wide">
                     <a href="#schedule" class="hover:text-resort-gold transition">
                         <span class="en">Schedule</span><span class="es">Horario</span>
@@ -97,7 +93,6 @@
                         <span class="en">Dining</span><span class="es">Comedor</span>
                     </a>
                     
-                    <!-- Language Toggles (Using Image Flags) -->
                     <div class="flex items-center space-x-3 border-l border-gray-300 dark:border-gray-600 pl-4">
                         <button onclick="setLanguage('en')" class="hover:scale-110 transition focus:outline-none" title="English">
                             <img src="https://flagcdn.com/w40/us.png" width="24" alt="US Flag" class="rounded-sm shadow-sm">
@@ -119,7 +114,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero-bg h-screen flex items-center justify-center relative">
         <div class="text-center px-4 fade-in z-10 mt-16">
             <h2 class="text-resort-gold font-sans tracking-[0.2em] text-sm md:text-base uppercase mb-4 shadow-sm">
@@ -142,7 +136,6 @@
         </div>
     </header>
 
-    <!-- Hotel Recommendation -->
     <section id="hotel" class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 text-center fade-in">
             <h2 class="font-serif text-3xl mb-4 dark:text-white">
@@ -164,7 +157,6 @@
         </div>
     </section>
 
-    <!-- Interactive Schedule -->
     <section id="schedule" class="py-16 max-w-5xl mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="font-serif text-4xl mb-4 dark:text-white">
@@ -175,7 +167,6 @@
         </div>
 
         <div class="space-y-6">
-            <!-- Thursday -->
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow border-l-4 border-resort-blue p-6">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 mb-4">
                     <div>
@@ -193,7 +184,6 @@
                 </p>
             </div>
 
-             <!-- Friday -->
              <div class="bg-white dark:bg-gray-800 rounded-lg shadow border-l-4 border-resort-blue p-6">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 mb-4">
                     <div>
@@ -211,7 +201,6 @@
                 </p>
             </div>
 
-            <!-- Saturday -->
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow border-l-4 border-resort-gold p-6">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 mb-4">
                     <div>
@@ -232,7 +221,6 @@
                 </div>
             </div>
 
-            <!-- Weekend Note -->
             <div class="bg-resort-tan dark:bg-gray-700 rounded-lg p-6 text-center shadow-inner">
                 <h3 class="font-serif text-xl font-bold text-resort-blue dark:text-resort-gold mb-2">
                     <span class="en">Throughout the Weekend</span>
@@ -246,7 +234,6 @@
         </div>
     </section>
 
-    <!-- Things To Do -->
     <section id="explore" class="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -256,7 +243,6 @@
                 </h2>
                 <div class="w-16 h-1 bg-resort-gold mx-auto mb-8"></div>
                 
-                <!-- Filters -->
                 <div class="flex flex-wrap justify-center gap-3 font-sans text-sm mb-10">
                     <button class="filter-btn active bg-resort-blue text-white px-4 py-2 rounded" data-filter="all">
                         <span class="en">All</span><span class="es">Todo</span>
@@ -276,10 +262,8 @@
                 </div>
             </div>
 
-            <!-- Attraction Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="attractions-grid">
                 
-                <!-- Card 1: Bellagio Fountains -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family outdoor">
                     <img src="https://loremflickr.com/500/300/bellagio,fountains/all" alt="Bellagio Fountains" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -294,7 +278,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Bellagio Conservatory -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family">
                     <img src="https://loremflickr.com/500/300/bellagio,conservatory/all" alt="Bellagio Conservatory" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -309,7 +292,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Seven Magic Mountains -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family outdoor">
                     <img src="https://loremflickr.com/500/300/sevenmagicmountains/all" alt="Seven Magic Mountains" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -324,7 +306,6 @@
                     </div>
                 </div>
 
-                <!-- Card 4: Fremont Street -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free outdoor teens">
                     <img src="https://loremflickr.com/500/300/fremontstreet/all" alt="Fremont Street" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -339,7 +320,6 @@
                     </div>
                 </div>
 
-                <!-- Card 5: Pinball Hall of Fame -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="free family teens">
                     <img src="https://loremflickr.com/500/300/pinball,arcade/all" alt="Pinball Hall of Fame" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -354,7 +334,6 @@
                     </div>
                 </div>
 
-                <!-- Card 6: Red Rock Canyon -->
                 <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
                     <img src="https://loremflickr.com/500/300/redrockcanyon/all" alt="Red Rock Canyon" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -368,147 +347,10 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Card 7: Valley of Fire -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family">
-                    <img src="https://loremflickr.com/500/300/valleyoffire/all" alt="Valley of Fire" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">Valley of Fire</h3>
-                            <span class="bg-resort-gold text-white text-xs px-2 py-1 rounded font-bold">$15/Vehicle</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">Nevada's oldest state park features world-renowned bright red Aztec sandstone formations.</span>
-                            <span class="es">El parque estatal más antiguo de Nevada presenta formaciones de arenisca azteca de color rojo brillante.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 8: Hoover Dam -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family teens">
-                    <img src="https://loremflickr.com/500/300/hooverdam/all" alt="Hoover Dam" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">Hoover Dam</h3>
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">Free to Walk</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">A marvel of modern engineering. Walk across the top for free, or pay for guided interior tours.</span>
-                            <span class="es">Una maravilla de la ingeniería moderna. Camina por la parte superior gratis o paga por recorridos interiores.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 9: Shark Reef Aquarium -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family">
-                    <img src="https://loremflickr.com/500/300/aquarium,mandalay/all" alt="Shark Reef" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">Shark Reef Aquarium</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">Located at Mandalay Bay, featuring thousands of marine animals and a shipwreck tunnel.</span>
-                            <span class="es">Ubicado en Mandalay Bay, con miles de animales marinos y un túnel de naufragio.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 10: Discovery Children's Museum -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family">
-                    <img src="https://loremflickr.com/500/300/childrensmuseum/all" alt="Discovery Museum" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">Discovery Museum</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">Three stories of interactive, hands-on exhibits perfect for toddlers through pre-teens.</span>
-                            <span class="es">Tres pisos de exhibiciones interactivas, perfectas para niños pequeños hasta preadolescentes.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 11: The Sphere -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family teens">
-                    <img src="https://loremflickr.com/500/300/sphere,vegas/all" alt="The Sphere" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">The Sphere</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">A revolutionary entertainment venue offering immersive cinematic experiences and concerts.</span>
-                            <span class="es">Un lugar de entretenimiento revolucionario que ofrece experiencias inmersivas y conciertos.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 12: High Roller -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="family teens outdoor">
-                    <img src="https://loremflickr.com/500/300/highroller,vegas/all" alt="High Roller" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">High Roller</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">North America's tallest observation wheel offers sweeping 360-degree views of the Vegas valley.</span>
-                            <span class="es">La rueda de observación más alta de Norteamérica ofrece amplias vistas de 360 grados del valle.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 13: The Neon Museum -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor family teens">
-                    <img src="https://loremflickr.com/500/300/neonmuseum/all" alt="Neon Museum" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">The Neon Museum</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">The "Neon Boneyard" preserves iconic Las Vegas signs. Stunning at sunset or night.</span>
-                            <span class="es">El "Neon Boneyard" conserva letreros icónicos de Las Vegas. Impresionante al atardecer o de noche.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 14: Fly LINQ Zipline -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="outdoor teens">
-                    <img src="https://loremflickr.com/500/300/zipline,vegas/all" alt="Fly LINQ Zipline" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">Fly LINQ Zipline</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">Soar 12 stories above the LINQ Promenade. A quick thrill right in the middle of the Strip.</span>
-                            <span class="es">Vuela 12 pisos sobre el LINQ Promenade. Una emoción rápida en el medio del Strip.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 15: AREA15 -->
-                <div class="attraction-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition transform hover:-translate-y-1" data-category="teens">
-                    <img src="https://loremflickr.com/500/300/immersive,art/all" alt="AREA15" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-xl font-bold dark:text-white">AREA15 / Omega Mart</h3>
-                            <span class="bg-resort-blue text-white text-xs px-2 py-1 rounded font-bold">$$$</span>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            <span class="en">Immersive, mind-bending art and entertainment complex. Great for teens and adults.</span>
-                            <span class="es">Complejo de arte y entretenimiento inmersivo y alucinante. Genial para adolescentes y adultos.</span>
-                        </p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Restaurants & Dining Section -->
     <section id="dining" class="py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -518,7 +360,6 @@
                 </h2>
                 <div class="w-16 h-1 bg-resort-gold mx-auto mb-8"></div>
                 
-                <!-- Dining Filters -->
                 <div class="flex flex-wrap justify-center gap-2 font-sans text-xs sm:text-sm mb-10 max-w-5xl mx-auto">
                     <button class="dine-filter-btn active bg-resort-blue text-white px-3 py-1.5 rounded" data-filter="all">
                         <span class="en">All</span><span class="es">Todo</span>
@@ -544,10 +385,8 @@
                     <button class="dine-filter-btn bg-gray-100 dark:bg-gray-700 text-resort-blue dark:text-white px-3 py-1.5 rounded shadow-sm hover:bg-gray-200 transition" data-filter="luxury"><span class="en">Luxury</span><span class="es">Lujo</span></button>
                 </div>
 
-                <!-- Dining Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="dining-grid">
                     
-                    <!-- Hash House A Go Go -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="breakfast kidfriendly largegroups">
                         <div>
                             <img src="https://loremflickr.com/500/300/breakfast,pancakes/all" alt="Hash House A Go Go" class="w-full h-40 object-cover">
@@ -572,7 +411,6 @@
                         </div>
                     </div>
 
-                    <!-- Earl of Sandwich -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="lunch affordable kidfriendly">
                         <div>
                             <img src="https://loremflickr.com/500/300/sandwich,lunch/all" alt="Earl of Sandwich" class="w-full h-40 object-cover">
@@ -597,32 +435,6 @@
                         </div>
                     </div>
 
-                    <!-- In-N-Out Burger -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="lunch dinner latenight affordable kidfriendly">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/burger,fries/all" alt="In-N-Out Burger" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">In-N-Out Burger</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Lunch / Late Night</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A West Coast staple serving up fresh, classic burgers and animal-style fries. Always a hit with kids.</span>
-                                    <span class="es">Un clásico de la costa oeste que sirve hamburguesas frescas y papas fritas. Siempre un éxito con los niños.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.in-n-out.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=In-N-Out+Burger+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eiffel Tower Restaurant -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="dinner finedining luxury">
                         <div>
                             <img src="https://loremflickr.com/500/300/finedining,restaurant/all" alt="Eiffel Tower Restaurant" class="w-full h-40 object-cover">
@@ -647,33 +459,7 @@
                         </div>
                     </div>
 
-                    <!-- Mon Ami Gabi -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="breakfast lunch dinner finedining luxury">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/bistro,patio/all" alt="Mon Ami Gabi" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Mon Ami Gabi</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Breakfast / Fine Dining</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">Classic French bistro fare right on the Strip, famous for its patio seating and breakfast crêpes.</span>
-                                    <span class="es">Comida clásica de bistró francés justo en el Strip, famoso por su patio y sus crepas de desayuno.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.monamigabi.com/las-vegas/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Mon+Ami+Gabi+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bacchanal Buffet -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="buffets largegroups luxury dinner breakfast lunch">
+                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="buffets largegroups luxury dinner">
                         <div>
                             <img src="https://loremflickr.com/500/300/buffet,food/all" alt="Bacchanal Buffet" class="w-full h-40 object-cover">
                             <div class="p-5 pb-0">
@@ -697,32 +483,6 @@
                         </div>
                     </div>
 
-                    <!-- Wicked Spoon -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="buffets breakfast lunch luxury">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/buffet,desserts/all" alt="Wicked Spoon" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Wicked Spoon</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Buffets / Lunch</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A high-end buffet at the Cosmopolitan known for beautiful individual tapas-style portions.</span>
-                                    <span class="es">Un bufé de lujo en el Cosmopolitan conocido por hermosas porciones individuales estilo tapas.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.cosmopolitanlasvegas.com/restaurants/wicked-spoon" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Wicked+Spoon+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Golden Steer -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="steakhouses dinner luxury">
                         <div>
                             <img src="https://loremflickr.com/500/300/steak,steakhouse/all" alt="Golden Steer" class="w-full h-40 object-cover">
@@ -746,33 +506,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- SW Steakhouse -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="steakhouses finedining luxury dinner">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/steak,wine/all" alt="SW Steakhouse" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">SW Steakhouse</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Steakhouses / Luxury</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A premier, luxury dining experience at the Wynn with exclusive cuts of Kobe beef and water show views.</span>
-                                    <span class="es">Una experiencia gastronómica de lujo en el Wynn con cortes exclusivos de carne Kobe y vistas al espectáculo acuático.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.wynnlasvegas.com/dining/fine-dining/sw-steakhouse" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=SW+Steakhouse+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Carmine's -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="italian largegroups dinner kidfriendly">
                         <div>
                             <img src="https://loremflickr.com/500/300/pasta,italian/all" alt="Carmine's" class="w-full h-40 object-cover">
@@ -796,33 +530,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Battista's Hole in the Wall -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="italian dinner affordable largegroups kidfriendly">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/spaghetti,wine/all" alt="Battista's Hole in the Wall" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Battista's Hole in the Wall</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Italian / Affordable</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A quirky, old-school Vegas institution offering generous set-menu Italian dinners with included house wine.</span>
-                                    <span class="es">Una institución peculiar y clásica de Las Vegas que ofrece cenas italianas con menú fijo y vino de la casa incluido.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://battistaslasvegas.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Battistas+Hole+in+the+Wall+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Javier's -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="mexican dinner luxury">
                         <div>
                             <img src="https://loremflickr.com/500/300/mexican,food,gourmet/all" alt="Javier's" class="w-full h-40 object-cover">
@@ -846,33 +554,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- El Dorado Cantina -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="mexican lunch dinner latenight">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/enchiladas,mexican/all" alt="El Dorado Cantina" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">El Dorado Cantina</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Mexican / Late Night</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">Incredible, award-winning authentic Mexican dishes made entirely from sustainably sourced and organic ingredients. Open late!</span>
-                                    <span class="es">Increíbles y galardonados platos mexicanos auténticos elaborados con ingredientes de origen sostenible y orgánicos. ¡Abierto hasta tarde!</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://eldoradocantina.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=El+Dorado+Cantina+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Din Tai Fung -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="asian lunch dinner kidfriendly">
                         <div>
                             <img src="https://loremflickr.com/500/300/dumplings,dimsum/all" alt="Din Tai Fung" class="w-full h-40 object-cover">
@@ -896,33 +578,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Lotus of Siam -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="asian dinner">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/thai,food/all" alt="Lotus of Siam" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Lotus of Siam</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Asian / Dinner</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">Legendary, James Beard Award-winning Northern Thai cuisine widely considered some of the best in North America.</span>
-                                    <span class="es">Cocina tailandesa legendaria y galardonada, considerada una de las mejores de Norteamérica.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://lotusofsiamlv.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Lotus+of+Siam+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Joe's Seafood -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="seafood steakhouses finedining dinner luxury">
                         <div>
                             <img src="https://loremflickr.com/500/300/seafood,crab/all" alt="Joe's Seafood" class="w-full h-40 object-cover">
@@ -946,33 +602,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Catch -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="seafood asian finedining luxury dinner">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/sushi,seafood/all" alt="Catch" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Catch</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Seafood / Luxury</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">An extravagant dining experience at Aria featuring heavily plated Asian-influenced seafood, sushi, and steak.</span>
-                                    <span class="es">Una experiencia gastronómica extravagante en Aria con mariscos, sushi y filetes con influencia asiática.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://aria.mgmresorts.com/en/restaurants/catch.html" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Catch+Aria+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Rollin Smoke Barbeque -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="bbq lunch dinner affordable kidfriendly">
                         <div>
                             <img src="https://loremflickr.com/500/300/bbq,ribs/all" alt="Rollin Smoke BBQ" class="w-full h-40 object-cover">
@@ -996,33 +626,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Mabel's BBQ -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="bbq lunch dinner kidfriendly largegroups">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/bbq,brisket/all" alt="Mabel's BBQ" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Mabel's BBQ</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">BBQ / Large Groups</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A lively, meat-centric smokehouse at the Palms featuring craft beers and huge, shareable BBQ platters.</span>
-                                    <span class="es">Un animado ahumadero en el Palms con cervezas artesanales y enormes bandejas de barbacoa para compartir.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.palms.com/dining/mabels-bbq" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Mabels+BBQ+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Pizza Rock -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="pizza lunch dinner latenight kidfriendly largegroups">
                         <div>
                             <img src="https://loremflickr.com/500/300/pizza,restaurant/all" alt="Pizza Rock" class="w-full h-40 object-cover">
@@ -1046,83 +650,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Secret Pizza -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="pizza latenight affordable">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/pizza,slice/all" alt="Secret Pizza" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Secret Pizza</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Pizza / Late Night</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A literal hidden gem inside the Cosmopolitan serving up incredible New York-style slices late into the night.</span>
-                                    <span class="es">Una joya escondida dentro del Cosmopolitan que sirve increíbles porciones al estilo de Nueva York hasta altas horas de la noche.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.cosmopolitanlasvegas.com/restaurants/secret-pizza" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Secret+Pizza+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- True Food Kitchen -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="lunch dinner kidfriendly">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/salad,healthy/all" alt="True Food Kitchen" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">True Food Kitchen</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Lunch / Dinner</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A vibrant menu built strictly around healthy, organic whole foods, offering great low-carb options for the whole group.</span>
-                                    <span class="es">Un menú vibrante construido en torno a alimentos integrales orgánicos y saludables, que ofrece excelentes opciones bajas en carbohidratos.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.truefoodkitchen.com/locations/lasvegas/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=True+Food+Kitchen+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Proteinhouse -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="breakfast lunch dinner affordable">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/healthy,mealprep/all" alt="Proteinhouse" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Proteinhouse</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Breakfast / Lunch</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">Perfect for staying on top of precise nutritional tracking with macro-friendly, high-protein, low-carb meals and organic bowls.</span>
-                                    <span class="es">Perfecto para un seguimiento nutricional preciso con comidas bajas en carbohidratos, ricas en proteínas y opciones orgánicas.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://www.protein-house.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Proteinhouse+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Black Tap -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="desserts lunch dinner kidfriendly">
                         <div>
                             <img src="https://loremflickr.com/500/300/milkshake,dessert/all" alt="Black Tap" class="w-full h-40 object-cover">
@@ -1147,7 +675,6 @@
                         </div>
                     </div>
 
-                    <!-- Vesta Coffee Roasters -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="coffee breakfast affordable">
                         <div>
                             <img src="https://loremflickr.com/500/300/latte,coffee/all" alt="Vesta Coffee" class="w-full h-40 object-cover">
@@ -1171,33 +698,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Mothership Coffee -->
-                    <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="coffee breakfast affordable">
-                        <div>
-                            <img src="https://loremflickr.com/500/300/coffeebreak,pastry/all" alt="Mothership Coffee" class="w-full h-40 object-cover">
-                            <div class="p-5 pb-0">
-                                <h3 class="font-serif text-lg font-bold dark:text-white mb-1">Mothership Coffee</h3>
-                                <p class="text-xs text-resort-orange font-bold uppercase mb-2">Coffee / Breakfast</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <span class="en">A local favorite featuring small-batch artisanal roasted coffee and incredible baked goods.</span>
-                                    <span class="es">Un favorito local que ofrece café tostado artesanal y productos horneados increíbles.</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-4">
-                            <div class="flex gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
-                                <a href="https://mothershipcoffee.com/" target="_blank" class="flex-1 bg-resort-blue text-white text-center text-xs font-bold py-2 rounded hover:bg-opacity-90 transition shadow-sm">
-                                    <span class="en">Menu</span><span class="es">Menú</span>
-                                </a>
-                                <a href="https://maps.google.com/?q=Mothership+Coffee+Roasters+Las+Vegas" target="_blank" class="flex-1 bg-gray-200 dark:bg-gray-700 text-resort-blue dark:text-white text-center text-xs font-bold py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition shadow-sm">
-                                    <span class="en">Map</span><span class="es">Mapa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Peppermill -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="latenight breakfast dinner affordable">
                         <div>
                             <img src="https://loremflickr.com/500/300/diner,neon/all" alt="Peppermill" class="w-full h-40 object-cover">
@@ -1222,7 +723,6 @@
                         </div>
                     </div>
 
-                    <!-- Tacos El Gordo -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="mexican affordable latenight lunch dinner">
                         <div>
                             <img src="https://loremflickr.com/500/300/tacos,mexican/all" alt="Tacos El Gordo" class="w-full h-40 object-cover">
@@ -1247,7 +747,6 @@
                         </div>
                     </div>
 
-                    <!-- Nobu -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="luxury asian finedining dinner">
                         <div>
                             <img src="https://loremflickr.com/500/300/sushi,gourmet/all" alt="Nobu" class="w-full h-40 object-cover">
@@ -1272,7 +771,6 @@
                         </div>
                     </div>
 
-                    <!-- Rainforest Cafe -->
                     <div class="dine-card flex flex-col justify-between bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden shadow transition transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700" data-category="kidfriendly lunch dinner largegroups">
                         <div>
                             <img src="https://loremflickr.com/500/300/jungle,cafe/all" alt="Rainforest Cafe" class="w-full h-40 object-cover">
@@ -1302,7 +800,6 @@
         </div>
     </section>
 
-    <!-- Dynamic RSVP Section -->
     <section id="rsvp" class="py-24 bg-resort-blue text-white">
         <div class="max-w-2xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -1317,7 +814,6 @@
 
             <form id="vacationRsvpForm" class="bg-white/10 p-8 rounded-lg backdrop-blur-sm border border-white/20">
                 
-                <!-- Primary Guest -->
                 <h3 class="font-bold text-resort-gold mb-4 border-b border-white/20 pb-2">
                     <span class="en">Primary Guest</span><span class="es">Invitado Principal</span>
                 </h3>
@@ -1336,10 +832,8 @@
                     </div>
                 </div>
                 
-                <!-- Dynamic Additional Guests Container -->
                 <div id="additional-guests"></div>
 
-                <!-- Add Buttons -->
                 <div class="flex flex-wrap gap-3 mb-8 mt-4">
                     <button type="button" onclick="addGuest('Adult')" class="text-sm bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded transition">
                         <span class="en">+ Add Adult</span><span class="es">+ Agregar Adulto</span>
@@ -1356,7 +850,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-resort-dark text-gray-400 py-12 text-center font-sans text-sm">
         <div class="max-w-6xl mx-auto px-4">
             <p class="font-serif text-2xl text-white mb-2">Las Vegas Vacation '27</p>
@@ -1364,7 +857,6 @@
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
         // --- Language Toggle Logic ---
         function setLanguage(lang) {
