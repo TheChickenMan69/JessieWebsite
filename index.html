@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,18 +16,19 @@
             theme: {
                 extend: {
                     colors: {
-                        'ink': '#0B0D14',
-                        'panel': '#141828',
-                        'panel2': '#1B2036',
-                        'neon-pink': '#FF3D8A',
-                        'neon-cyan': '#35E0FF',
-                        'marquee-gold': '#FFC94A',
-                        'cream': '#F5F2EA',
-                        'sand': '#EFE7D8'
+                        'ink': '#2B1D26',
+                        'panel': '#372632',
+                        'panel2': '#453140',
+                        'terra': '#C05B3C',
+                        'sage': '#7E8F63',
+                        'gold': '#E8A44C',
+                        'cream': '#F9F1E1',
+                        'sand': '#F1E5CF'
                     },
                     fontFamily: {
                         'sans': ['Outfit', 'sans-serif'],
-                        'display': ['Unbounded', 'sans-serif'],
+                        'display': ['Fjalla One', 'sans-serif'],
+                        'script': ['Caveat', 'cursive'],
                     }
                 }
             }
@@ -41,66 +42,61 @@
 
         /* ---------- Neon signature (hero + section titles) ---------- */
         .neon-title {
-            background: linear-gradient(100deg, #FFC94A 0%, #FF3D8A 45%, #35E0FF 100%);
+            background: linear-gradient(100deg, #F5C46B 0%, #E8853D 50%, #C05B3C 100%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: shimmer 6s ease-in-out infinite;
+            animation: shimmer 8s ease-in-out infinite;
         }
         @keyframes shimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
         .neon-glow {
-            text-shadow: 0 0 18px rgba(255, 61, 138, 0.35), 0 0 45px rgba(53, 224, 255, 0.2);
+            text-shadow: 0 2px 24px rgba(43, 29, 38, 0.6);
         }
         .marquee-underline {
             height: 3px;
             border-radius: 999px;
-            background: linear-gradient(90deg, #FFC94A, #FF3D8A, #35E0FF);
-            box-shadow: 0 0 12px rgba(255, 61, 138, 0.5);
+            background: linear-gradient(90deg, #E8A44C, #C05B3C, #7E8F63);
+            opacity: .85;
         }
+        .script-accent { font-family: 'Caveat', cursive; }
 
         /* ---------- Hero ---------- */
         .hero-bg {
             background-image:
-                linear-gradient(to bottom, rgba(11, 13, 20, 0.55), rgba(11, 13, 20, 0.92)),
-                radial-gradient(ellipse at 20% 20%, rgba(255, 61, 138, 0.25), transparent 55%),
-                radial-gradient(ellipse at 80% 30%, rgba(53, 224, 255, 0.2), transparent 55%),
-                url('https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(to bottom, rgba(43, 29, 38, 0.25) 0%, rgba(43, 29, 38, 0.45) 55%, rgba(43, 29, 38, 0.85) 100%),
+                radial-gradient(ellipse at 50% 62%, rgba(245, 177, 92, 0.35), transparent 55%),
+                url('https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-color: #0B0D14;
-        }
-        html:not(.dark) .hero-bg {
-            background-image:
-                linear-gradient(to bottom, rgba(11, 13, 20, 0.5), rgba(11, 13, 20, 0.85)),
-                url('https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=1920&q=80');
+            background-color: #3A2830;
         }
         .ticket-chip {
-            border: 1px dashed rgba(255, 201, 74, 0.7);
-            background: rgba(255, 201, 74, 0.08);
+            border: 1px dashed rgba(232, 164, 76, 0.8);
+            background: rgba(232, 164, 76, 0.12);
         }
 
         /* ---------- Glass nav ---------- */
         .glass {
-            background: rgba(245, 242, 234, 0.85);
+            background: rgba(249, 241, 225, 0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(11, 13, 20, 0.06);
+            border-bottom: 1px solid rgba(43, 29, 38, 0.08);
         }
         .dark .glass {
-            background: rgba(11, 13, 20, 0.75);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(43, 29, 38, 0.8);
+            border-bottom: 1px solid rgba(249, 241, 225, 0.08);
         }
 
         /* ---------- Cards ---------- */
         .card-hover { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
         .card-hover:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 40px -12px rgba(255, 61, 138, 0.35), 0 6px 24px -8px rgba(53, 224, 255, 0.2);
-            border-color: rgba(255, 61, 138, 0.4) !important;
+            box-shadow: 0 12px 36px -12px rgba(192, 91, 60, 0.4), 0 6px 20px -8px rgba(232, 164, 76, 0.25);
+            border-color: rgba(192, 91, 60, 0.45) !important;
         }
 
         /* ---------- Collapsible sections ---------- */
@@ -133,11 +129,11 @@
         /* Image fallback tiles */
         .img-fallback {
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #1B2036 0%, #2a1b3d 50%, #3d1b30 100%);
+            background: linear-gradient(135deg, #453140 0%, #7a4636 50%, #b7793f 100%);
             font-size: 3rem;
         }
         html:not(.dark) .img-fallback {
-            background: linear-gradient(135deg, #EFE7D8 0%, #f7d9e4 50%, #d9eef7 100%);
+            background: linear-gradient(135deg, #F1E5CF 0%, #f3d3b8 50%, #e3e6d2 100%);
         }
     </style>
 </head>
@@ -147,22 +143,23 @@
     <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="#" class="font-display text-lg md:text-xl font-800 tracking-wide">
-                    <span class="text-neon-pink">VEGAS</span><span class="text-ink dark:text-cream"> ’27</span>
+                <a href="#" class="flex items-baseline gap-2">
+                    <span class="font-display text-lg md:text-xl tracking-wide"><span class="text-terra">VEGAS</span><span class="text-ink dark:text-cream"> ’27</span></span>
+                    <span class="script-accent text-gold text-lg hidden sm:inline">family trip</span>
                 </a>
 
                 <!-- Desktop links -->
                 <div class="hidden md:flex space-x-6 items-center text-sm font-medium tracking-wide">
-                    <a href="#schedule" class="nav-link hover:text-neon-pink transition" data-expand="schedule">
+                    <a href="#schedule" class="nav-link hover:text-terra transition" data-expand="schedule">
                         <span class="en">Schedule</span><span class="es">Horario</span>
                     </a>
-                    <a href="#hotel" class="hover:text-neon-pink transition">
+                    <a href="#hotel" class="hover:text-terra transition">
                         <span class="en">Hotel</span><span class="es">Hotel</span>
                     </a>
-                    <a href="#explore" class="nav-link hover:text-neon-pink transition" data-expand="explore">
+                    <a href="#explore" class="nav-link hover:text-terra transition" data-expand="explore">
                         <span class="en">Things To Do</span><span class="es">Qué Hacer</span>
                     </a>
-                    <a href="#dining" class="nav-link hover:text-neon-pink transition" data-expand="dining">
+                    <a href="#dining" class="nav-link hover:text-terra transition" data-expand="dining">
                         <span class="en">Dining</span><span class="es">Restaurantes</span>
                     </a>
 
@@ -177,7 +174,7 @@
 
                     <button id="darkModeToggle" class="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-cream/10 transition" title="Toggle light/dark">🌓</button>
 
-                    <a href="#rsvp" class="bg-gradient-to-r from-neon-pink to-marquee-gold text-ink font-bold px-6 py-2 rounded-full shadow-lg shadow-neon-pink/30 hover:shadow-neon-pink/50 hover:scale-105 transition">
+                    <a href="#rsvp" class="bg-gradient-to-r from-gold to-terra text-cream font-bold px-6 py-2 rounded-full shadow-lg shadow-terra/30 hover:shadow-terra/50 hover:scale-105 transition">
                         RSVP
                     </a>
                 </div>
@@ -199,7 +196,7 @@
                 <button onclick="setLanguage('en')"><img src="https://flagcdn.com/w40/us.png" width="26" alt="US Flag" class="rounded-sm"></button>
                 <button onclick="setLanguage('es')"><img src="https://flagcdn.com/w40/pr.png" width="26" alt="Puerto Rico Flag" class="rounded-sm"></button>
                 <button id="darkModeToggleMobile" class="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-cream/10">🌓</button>
-                <a href="#rsvp" class="ml-auto bg-gradient-to-r from-neon-pink to-marquee-gold text-ink font-bold px-5 py-2 rounded-full">RSVP</a>
+                <a href="#rsvp" class="ml-auto bg-gradient-to-r from-gold to-terra text-cream font-bold px-5 py-2 rounded-full">RSVP</a>
             </div>
         </div>
     </nav>
@@ -207,22 +204,26 @@
     <!-- ================= HERO ================= -->
     <header class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="text-center px-4 fade-in z-10 mt-16 max-w-4xl">
-            <div class="ticket-chip inline-flex items-center gap-2 px-5 py-2 rounded-full text-marquee-gold text-xs md:text-sm tracking-[0.25em] uppercase mb-8">
-                <span>★</span>
+            <p class="script-accent text-3xl md:text-5xl text-gold mb-3 drop-shadow-lg">
+                <span class="en">Save the Date!</span>
+                <span class="es">¡Aparta la Fecha!</span>
+            </p>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl leading-tight mb-5 text-cream neon-glow uppercase">
+                <span class="en">Family Vacation<br><span class="neon-title">in Las Vegas</span></span>
+                <span class="es">Vacaciones Familiares<br><span class="neon-title">en Las Vegas</span></span>
+            </h1>
+            <div class="ticket-chip inline-flex items-center gap-2 px-5 py-2 rounded-full text-cream text-xs md:text-sm tracking-[0.25em] uppercase mb-8">
+                <span class="text-gold">✦</span>
                 <span class="en">May 13 – 17, 2027 • Las Vegas, Nevada</span>
                 <span class="es">13 – 17 de Mayo, 2027 • Las Vegas, Nevada</span>
-                <span>★</span>
+                <span class="text-gold">✦</span>
             </div>
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-800 leading-tight mb-4 text-cream neon-glow">
-                <span class="en">FAMILY<br><span class="neon-title">VACATION ’27</span></span>
-                <span class="es">VACACIONES<br><span class="neon-title">FAMILIARES ’27</span></span>
-            </h1>
-            <p class="text-cream/70 text-base md:text-lg mb-10 max-w-xl mx-auto">
-                <span class="en">Five days. One city that never sleeps. The whole family, together.</span>
-                <span class="es">Cinco días. Una ciudad que nunca duerme. Toda la familia, juntos.</span>
+            <p class="text-cream/85 text-base md:text-lg mb-10 max-w-xl mx-auto">
+                <span class="en">Red rocks, golden sunsets, and the whole family in one place.</span>
+                <span class="es">Rocas rojas, atardeceres dorados y toda la familia en un solo lugar.</span>
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#rsvp" class="bg-gradient-to-r from-neon-pink to-marquee-gold text-ink font-bold tracking-wide px-10 py-4 rounded-full shadow-xl shadow-neon-pink/30 hover:scale-105 transition">
+                <a href="#rsvp" class="bg-gradient-to-r from-gold to-terra text-cream font-bold tracking-wide px-10 py-4 rounded-full shadow-xl shadow-terra/40 hover:scale-105 transition">
                     <span class="en">RSVP Now</span><span class="es">Confirmar Asistencia</span>
                 </a>
                 <a href="#schedule" class="nav-link border border-cream/40 text-cream tracking-wide px-10 py-4 rounded-full hover:bg-cream hover:text-ink transition" data-expand="schedule">
@@ -235,7 +236,7 @@
     <!-- ================= HOTEL ================= -->
     <section id="hotel" class="py-20 scroll-mt-24 bg-cream dark:bg-panel transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 text-center reveal">
-            <p class="text-neon-pink text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+            <p class="text-terra text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
                 <span class="en">Home Base</span><span class="es">Base de Operaciones</span>
             </p>
             <h2 class="font-display text-2xl md:text-3xl mb-4">
@@ -245,11 +246,11 @@
             <div class="marquee-underline w-20 mx-auto mb-10"></div>
 
             <div class="rounded-2xl p-8 md:p-10 bg-sand dark:bg-panel2 border border-ink/5 dark:border-cream/10 inline-block text-left card-hover">
-                <h3 class="font-display text-lg md:text-xl font-600 text-ink dark:text-marquee-gold mb-3">Home2 Suites by Hilton Las Vegas Northwest</h3>
+                <h3 class="font-display text-lg md:text-xl font-600 text-ink dark:text-gold mb-3">Home2 Suites by Hilton Las Vegas Northwest</h3>
                 <p class="text-ink/70 dark:text-cream/70 mb-5">
                     📍 8906 W Deer Springs Wy, Las Vegas, NV 89149
                 </p>
-                <a href="https://maps.google.com/?q=8906+W+Deer+Springs+Wy+Las+Vegas+NV" target="_blank" class="text-sm font-bold text-neon-pink hover:underline">
+                <a href="https://maps.google.com/?q=8906+W+Deer+Springs+Wy+Las+Vegas+NV" target="_blank" class="text-sm font-bold text-terra hover:underline">
                     <span class="en">View on Google Maps →</span>
                     <span class="es">Ver en Google Maps →</span>
                 </a>
@@ -261,12 +262,12 @@
     <section id="schedule" class="py-20 scroll-mt-24 max-w-5xl mx-auto px-4">
         <button class="collapse-toggle w-full group" data-target="schedule-body" aria-expanded="false" aria-controls="schedule-body">
             <div class="text-center reveal">
-                <p class="text-neon-cyan text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+                <p class="text-sage text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
                     <span class="en">The Plan</span><span class="es">El Plan</span>
                 </p>
                 <h2 class="font-display text-2xl md:text-4xl mb-4 inline-flex items-center gap-4">
                     <span><span class="en">Event Schedule</span><span class="es">Horario de Eventos</span></span>
-                    <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-neon-cyan/50 text-neon-cyan bg-neon-cyan/10 group-hover:bg-neon-cyan/20 transition shrink-0">
+                    <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-sage/50 text-sage bg-sage/10 group-hover:bg-sage/20 transition shrink-0">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                     </span>
                 </h2>
@@ -280,10 +281,10 @@
         <div id="schedule-body" class="collapse-body">
             <div class="collapse-inner">
                 <div class="space-y-6 pt-10">
-                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-neon-cyan p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
+                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-sage p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
                         <div class="border-b border-ink/10 dark:border-cream/10 pb-4 mb-4">
                             <h3 class="font-display text-lg md:text-xl font-600"><span class="en">Arrival Day</span><span class="es">Día de Llegada</span></h3>
-                            <p class="text-neon-pink font-bold text-sm mt-1"><span class="en">Thursday</span><span class="es">Jueves</span></p>
+                            <p class="text-terra font-bold text-sm mt-1"><span class="en">Thursday</span><span class="es">Jueves</span></p>
                         </div>
                         <p class="text-ink/70 dark:text-cream/70">
                             <span class="en">Welcome to Las Vegas! Check into your hotel, get settled, and rest up for the weekend.</span>
@@ -291,10 +292,10 @@
                         </p>
                     </div>
 
-                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-neon-cyan p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
+                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-sage p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
                         <div class="border-b border-ink/10 dark:border-cream/10 pb-4 mb-4">
                             <h3 class="font-display text-lg md:text-xl font-600"><span class="en">Optional Gathering</span><span class="es">Reunión Opcional</span></h3>
-                            <p class="text-neon-pink font-bold text-sm mt-1"><span class="en">Friday Night</span><span class="es">Viernes por la Noche</span></p>
+                            <p class="text-terra font-bold text-sm mt-1"><span class="en">Friday Night</span><span class="es">Viernes por la Noche</span></p>
                         </div>
                         <p class="text-ink/70 dark:text-cream/70">
                             <span class="en">Join us for a casual, optional evening gathering to kick off the festivities. Location TBA.</span>
@@ -302,22 +303,22 @@
                         </p>
                     </div>
 
-                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-marquee-gold p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
+                    <div class="rounded-2xl bg-cream dark:bg-panel border-l-4 border-gold p-6 shadow-sm card-hover border border-ink/5 dark:border-cream/5">
                         <div class="border-b border-ink/10 dark:border-cream/10 pb-4 mb-4">
                             <h3 class="font-display text-lg md:text-xl font-600"><span class="en">Dinner Gathering</span><span class="es">Cena Familiar</span></h3>
-                            <p class="text-neon-pink font-bold text-sm mt-1"><span class="en">Saturday</span><span class="es">Sábado</span></p>
+                            <p class="text-terra font-bold text-sm mt-1"><span class="en">Saturday</span><span class="es">Sábado</span></p>
                         </div>
                         <p class="text-ink/70 dark:text-cream/70 mb-4">
                             <span class="en">The main event! Hosted at Sara and Miguel's house.</span>
                             <span class="es">¡El evento principal! Organizado en la casa de Sara y Miguel.</span>
                         </p>
                         <div class="text-sm bg-sand dark:bg-panel2 p-3 rounded-xl">
-                            📍 <a href="https://maps.google.com/?q=4627+Lost+Creek+Ct+Las+Vegas+NV" target="_blank" class="hover:underline hover:text-neon-pink transition">4627 Lost Creek Ct, Las Vegas, NV 89031</a>
+                            📍 <a href="https://maps.google.com/?q=4627+Lost+Creek+Ct+Las+Vegas+NV" target="_blank" class="hover:underline hover:text-terra transition">4627 Lost Creek Ct, Las Vegas, NV 89031</a>
                         </div>
                     </div>
 
-                    <div class="rounded-2xl p-6 text-center bg-gradient-to-r from-neon-pink/10 via-marquee-gold/10 to-neon-cyan/10 border border-marquee-gold/30">
-                        <h3 class="font-display text-base md:text-lg font-600 text-ink dark:text-marquee-gold mb-2">
+                    <div class="rounded-2xl p-6 text-center bg-gradient-to-r from-terra/10 via-gold/10 to-sage/10 border border-gold/30">
+                        <h3 class="font-display text-base md:text-lg font-600 text-ink dark:text-gold mb-2">
                             <span class="en">Throughout the Weekend</span>
                             <span class="es">Durante el Fin de Semana</span>
                         </h3>
@@ -336,12 +337,12 @@
         <div class="max-w-7xl mx-auto px-4">
             <button class="collapse-toggle w-full group" data-target="explore-body" aria-expanded="false" aria-controls="explore-body">
                 <div class="text-center reveal">
-                    <p class="text-marquee-gold text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+                    <p class="text-gold text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
                         <span class="en">Explore</span><span class="es">Explora</span>
                     </p>
                     <h2 class="font-display text-2xl md:text-4xl mb-4 inline-flex items-center gap-4">
                         <span><span class="en">Things To Do in Vegas</span><span class="es">Cosas Que Hacer en Vegas</span></span>
-                        <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-marquee-gold/50 text-marquee-gold bg-marquee-gold/10 group-hover:bg-marquee-gold/20 transition shrink-0">
+                        <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/50 text-gold bg-gold/10 group-hover:bg-gold/20 transition shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </span>
                     </h2>
@@ -356,11 +357,11 @@
                 <div class="collapse-inner">
                     <div class="pt-10">
                         <div class="flex flex-wrap justify-center gap-3 text-sm mb-10">
-                            <button class="filter-btn active bg-gradient-to-r from-neon-pink to-marquee-gold text-ink font-bold px-5 py-2 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
-                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="free"><span class="en">Free</span><span class="es">Gratis</span></button>
-                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="outdoor"><span class="en">Outdoor</span><span class="es">Al Aire Libre</span></button>
-                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="family"><span class="en">Family/Kids</span><span class="es">Familia/Niños</span></button>
-                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="teens"><span class="en">Teens/Adults</span><span class="es">Adolescentes/Adultos</span></button>
+                            <button class="filter-btn active bg-gradient-to-r from-gold to-terra text-cream font-bold px-5 py-2 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
+                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="free"><span class="en">Free</span><span class="es">Gratis</span></button>
+                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="outdoor"><span class="en">Outdoor</span><span class="es">Al Aire Libre</span></button>
+                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="family"><span class="en">Family/Kids</span><span class="es">Familia/Niños</span></button>
+                            <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="teens"><span class="en">Teens/Adults</span><span class="es">Adolescentes/Adultos</span></button>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="attractions-grid">
@@ -370,13 +371,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Bellagio Fountains</h3>
-                                        <span class="bg-neon-cyan/15 text-neon-cyan text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
+                                        <span class="bg-sage/15 text-sage text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Iconic choreographed water show set to music. A must-see Vegas classic.</span>
                                         <span class="es">Icónico espectáculo de agua coreografiado con música. Un clásico imperdible.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Bellagio+Fountains+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Bellagio+Fountains+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -385,13 +386,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Bellagio Conservatory</h3>
-                                        <span class="bg-neon-cyan/15 text-neon-cyan text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
+                                        <span class="bg-sage/15 text-sage text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Breathtaking indoor botanical gardens that change completely with the seasons.</span>
                                         <span class="es">Impresionantes jardines botánicos interiores que cambian por completo con las estaciones.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Bellagio+Conservatory+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Bellagio+Conservatory+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -400,13 +401,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Seven Magic Mountains</h3>
-                                        <span class="bg-neon-cyan/15 text-neon-cyan text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
+                                        <span class="bg-sage/15 text-sage text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">A colorful, large-scale public art installation in the desert just south of Vegas.</span>
                                         <span class="es">Una colorida instalación de arte público a gran escala en el desierto al sur de Las Vegas.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Seven+Magic+Mountains" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Seven+Magic+Mountains" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -415,13 +416,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Fremont Street</h3>
-                                        <span class="bg-neon-cyan/15 text-neon-cyan text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
+                                        <span class="bg-sage/15 text-sage text-xs px-3 py-1 rounded-full font-bold shrink-0">Free</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Massive LED canopy light shows, street performers, and classic downtown Vegas energy.</span>
                                         <span class="es">Masivos espectáculos de luces LED, artistas callejeros y la clásica energía del centro.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Fremont+Street+Experience+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Fremont+Street+Experience+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -430,13 +431,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Pinball Hall of Fame</h3>
-                                        <span class="bg-neon-cyan/15 text-neon-cyan text-xs px-3 py-1 rounded-full font-bold shrink-0">Free Entry</span>
+                                        <span class="bg-sage/15 text-sage text-xs px-3 py-1 rounded-full font-bold shrink-0">Free Entry</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Hundreds of vintage pinball machines and arcades. Entry is free, games cost quarters.</span>
                                         <span class="es">Cientos de máquinas de pinball vintage. La entrada es gratis, los juegos cuestan monedas.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Pinball+Hall+of+Fame+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Pinball+Hall+of+Fame+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -445,13 +446,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Red Rock Canyon</h3>
-                                        <span class="bg-marquee-gold/20 text-marquee-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$20/Vehicle</span>
+                                        <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$20/Vehicle</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Stunning desert landscapes just outside the city. Great for a scenic drive or morning hike.</span>
                                         <span class="es">Impresionantes paisajes desérticos a las afueras de la ciudad. Genial para un paseo panorámico o caminata.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Red+Rock+Canyon+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Red+Rock+Canyon+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -460,15 +461,15 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">PopStroke</h3>
-                                        <span class="bg-marquee-gold/20 text-marquee-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
+                                        <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Tiger Woods-designed putting courses with food, drinks, and a playground — fun for all ages.</span>
                                         <span class="es">Campos de mini golf diseñados por Tiger Woods con comida, bebidas y área de juegos — diversión para todas las edades.</span>
                                     </p>
                                     <div class="flex gap-4">
-                                        <a href="https://www.popstroke.com/" target="_blank" class="text-xs font-bold text-neon-cyan hover:underline"><span class="en">Website →</span><span class="es">Sitio Web →</span></a>
-                                        <a href="https://maps.google.com/?q=PopStroke+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                        <a href="https://www.popstroke.com/" target="_blank" class="text-xs font-bold text-sage hover:underline"><span class="en">Website →</span><span class="es">Sitio Web →</span></a>
+                                        <a href="https://maps.google.com/?q=PopStroke+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -478,13 +479,13 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">Summerlin Paintball</h3>
-                                        <span class="bg-marquee-gold/20 text-marquee-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
+                                        <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Outdoor paintball battles on the west side of town. Great for teens and competitive adults.</span>
                                         <span class="es">Batallas de paintball al aire libre en el lado oeste de la ciudad. Genial para adolescentes y adultos competitivos.</span>
                                     </p>
-                                    <a href="https://maps.google.com/?q=Paintball+Summerlin+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                    <a href="https://maps.google.com/?q=Paintball+Summerlin+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                 </div>
                             </div>
 
@@ -493,15 +494,15 @@
                                 <div class="p-6 flex flex-col flex-1">
                                     <div class="flex justify-between items-start mb-2 gap-2">
                                         <h3 class="font-display text-base font-600">K1 Speed Go Karts</h3>
-                                        <span class="bg-marquee-gold/20 text-marquee-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
+                                        <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-bold shrink-0">$$</span>
                                     </div>
                                     <p class="text-sm text-ink/70 dark:text-cream/60 mb-4 flex-1">
                                         <span class="en">Indoor electric go-kart racing — fast, air-conditioned, and open to kids and adults.</span>
                                         <span class="es">Carreras de go-karts eléctricos bajo techo — rápidas, con aire acondicionado y abiertas a niños y adultos.</span>
                                     </p>
                                     <div class="flex gap-4">
-                                        <a href="https://www.k1speed.com/las-vegas-location.html" target="_blank" class="text-xs font-bold text-neon-cyan hover:underline"><span class="en">Website →</span><span class="es">Sitio Web →</span></a>
-                                        <a href="https://maps.google.com/?q=K1+Speed+Las+Vegas" target="_blank" class="text-xs font-bold text-neon-pink hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
+                                        <a href="https://www.k1speed.com/las-vegas-location.html" target="_blank" class="text-xs font-bold text-sage hover:underline"><span class="en">Website →</span><span class="es">Sitio Web →</span></a>
+                                        <a href="https://maps.google.com/?q=K1+Speed+Las+Vegas" target="_blank" class="text-xs font-bold text-terra hover:underline"><span class="en">Map →</span><span class="es">Mapa →</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -518,12 +519,12 @@
         <div class="max-w-7xl mx-auto px-4">
             <button class="collapse-toggle w-full group" data-target="dining-body" aria-expanded="false" aria-controls="dining-body">
                 <div class="text-center reveal">
-                    <p class="text-neon-pink text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+                    <p class="text-terra text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
                         <span class="en">Eat Well</span><span class="es">Come Bien</span>
                     </p>
                     <h2 class="font-display text-2xl md:text-4xl mb-4 inline-flex items-center gap-4">
                         <span><span class="en">Where To Eat</span><span class="es">Dónde Comer</span></span>
-                        <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-neon-pink/50 text-neon-pink bg-neon-pink/10 group-hover:bg-neon-pink/20 transition shrink-0">
+                        <span class="chevron inline-flex items-center justify-center w-10 h-10 rounded-full border border-terra/50 text-terra bg-terra/10 group-hover:bg-terra/20 transition shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </span>
                     </h2>
@@ -538,31 +539,38 @@
                 <div class="collapse-inner">
                     <div class="pt-10">
 
-                        <!-- ===== Jesse's Choices ===== -->
+                        <!-- ===== Jesse's Choices (collapsible) ===== -->
                         <div class="mb-16">
-                            <div class="text-center mb-8">
-                                <h3 class="font-display text-xl md:text-2xl font-600 inline-flex items-center gap-3">
-                                    <span class="text-marquee-gold">★</span>
-                                    <span class="neon-title"><span class="en">Jesse's Choices</span><span class="es">Las Elecciones de Jesse</span></span>
-                                    <span class="text-marquee-gold">★</span>
-                                </h3>
-                                <p class="text-sm text-ink/60 dark:text-cream/50 mt-2">
-                                    <span class="en">Hand-picked favorites you can't go wrong with.</span>
-                                    <span class="es">Favoritos seleccionados con los que no puedes equivocarte.</span>
-                                </p>
-                            </div>
+                            <button class="collapse-toggle w-full group" data-target="jesse-body" aria-expanded="false" aria-controls="jesse-body">
+                                <div class="text-center">
+                                    <h3 class="font-display text-xl md:text-2xl inline-flex items-center gap-3">
+                                        <span class="text-gold">★</span>
+                                        <span class="neon-title"><span class="en">Jesse's Choices</span><span class="es">Las Elecciones de Jesse</span></span>
+                                        <span class="text-gold">★</span>
+                                        <span class="chevron inline-flex items-center justify-center w-8 h-8 rounded-full border border-gold/60 text-gold bg-gold/10 group-hover:bg-gold/20 transition shrink-0">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                        </span>
+                                    </h3>
+                                    <p class="text-sm text-ink/60 dark:text-cream/50 mt-2">
+                                        <span class="en">Hand-picked favorites you can't go wrong with. Tap to see them.</span>
+                                        <span class="es">Favoritos seleccionados con los que no puedes equivocarte. Toca para verlos.</span>
+                                    </p>
+                                </div>
+                            </button>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div id="jesse-body" class="collapse-body">
+                                <div class="collapse-inner">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=75" alt="Buddy V's Ristorante" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍝">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">Buddy V's Ristorante</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Italian / The Venetian</span><span class="es">Italiano / The Venetian</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Italian / The Venetian</span><span class="es">Italiano / The Venetian</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">Hearty Italian-American comfort food from Buddy "Cake Boss" Valastro. Save room for dessert.</span>
                                                 <span class="es">Abundante comida italoamericana de Buddy "Cake Boss" Valastro. Deja espacio para el postre.</span>
@@ -571,21 +579,21 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://buddyvlasvegas.com/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://buddyvlasvegas.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Buddy+Vs+Ristorante+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=75" alt="Yardbird Table & Bar" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍗">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">Yardbird Table &amp; Bar</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Southern / The Venetian</span><span class="es">Sureño / The Venetian</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Southern / The Venetian</span><span class="es">Sureño / The Venetian</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">Legendary fried chicken and Southern comfort classics with a modern twist.</span>
                                                 <span class="es">Legendario pollo frito y clásicos sureños con un toque moderno.</span>
@@ -594,21 +602,21 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://runchickenrun.com/las-vegas/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://runchickenrun.com/las-vegas/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Yardbird+Table+and+Bar+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=75" alt="Echo & Rig" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥩">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">Echo &amp; Rig</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Steakhouse / Tivoli Village</span><span class="es">Cortes / Tivoli Village</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Steakhouse / Tivoli Village</span><span class="es">Cortes / Tivoli Village</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">Butcher shop and steakhouse in one — top-tier cuts without Strip prices.</span>
                                                 <span class="es">Carnicería y asador en uno — cortes de primera sin precios del Strip.</span>
@@ -617,21 +625,21 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://echoandrig.com/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://echoandrig.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Echo+and+Rig+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?auto=format&fit=crop&w=600&q=75" alt="Lindo Michoacán" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🌮">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">Lindo Michoacán</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Mexican / Local Favorite</span><span class="es">Mexicano / Favorito Local</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Mexican / Local Favorite</span><span class="es">Mexicano / Favorito Local</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">A beloved family-owned Vegas institution serving authentic Michoacán-style Mexican food.</span>
                                                 <span class="es">Una querida institución familiar de Las Vegas que sirve auténtica comida estilo Michoacán.</span>
@@ -640,21 +648,21 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://www.lindomichoacan.com/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://www.lindomichoacan.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Lindo+Michoacan+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=75" alt="North Italia" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍕">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">North Italia</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Italian / Handmade Daily</span><span class="es">Italiano / Hecho a Mano</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Italian / Handmade Daily</span><span class="es">Italiano / Hecho a Mano</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">Modern Italian with pasta and pizza made from scratch every single day.</span>
                                                 <span class="es">Italiano moderno con pasta y pizza hechas desde cero todos los días.</span>
@@ -663,21 +671,21 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://www.northitalia.com/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://www.northitalia.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=North+Italia+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-marquee-gold/40">
+                                <div class="flex flex-col justify-between bg-sand dark:bg-panel2 rounded-2xl overflow-hidden card-hover border-2 border-gold/40">
                                     <div>
                                         <div class="relative">
                                             <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=75" alt="Herbs and Rye" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍸">
-                                            <span class="absolute top-3 right-3 bg-marquee-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
+                                            <span class="absolute top-3 right-3 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full shadow">★ Jesse</span>
                                         </div>
                                         <div class="p-5 pb-0">
                                             <h3 class="font-display text-base font-600 mb-1">Herbs and Rye</h3>
-                                            <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Steaks & Cocktails / Off-Strip</span><span class="es">Cortes y Cócteles / Fuera del Strip</span></p>
+                                            <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Steaks & Cocktails / Off-Strip</span><span class="es">Cortes y Cócteles / Fuera del Strip</span></p>
                                             <p class="text-sm text-ink/70 dark:text-cream/60">
                                                 <span class="en">Award-winning cocktail bar with famous happy-hour steak deals. A true local gem (21+).</span>
                                                 <span class="es">Bar de cócteles galardonado con famosas ofertas de cortes en happy hour. Una verdadera joya local (21+).</span>
@@ -686,12 +694,14 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://herbsandrye.com/" target="_blank" class="flex-1 bg-gradient-to-r from-neon-pink to-marquee-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://herbsandrye.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Herbs+and+Rye+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
                                 </div>
 
+                            </div>
+                                </div>
                             </div>
                         </div>
 
@@ -703,26 +713,26 @@
                         </div>
 
                         <div class="flex flex-wrap justify-center gap-2 text-xs sm:text-sm mb-10 max-w-5xl mx-auto">
-                            <button class="dine-filter-btn active bg-gradient-to-r from-neon-pink to-marquee-gold text-ink font-bold px-4 py-1.5 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="breakfast"><span class="en">Breakfast</span><span class="es">Desayuno</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="lunch"><span class="en">Lunch</span><span class="es">Almuerzo</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="dinner"><span class="en">Dinner</span><span class="es">Cena</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="buffets"><span class="en">Buffets</span><span class="es">Bufés</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="finedining"><span class="en">Fine Dining</span><span class="es">Alta Cocina</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="steakhouses"><span class="en">Steakhouses</span><span class="es">Cortes de Carne</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="italian"><span class="en">Italian</span><span class="es">Italiano</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="mexican"><span class="en">Mexican</span><span class="es">Mexicano</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="asian"><span class="en">Asian</span><span class="es">Asiático</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="seafood"><span class="en">Seafood</span><span class="es">Mariscos</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="bbq"><span class="en">BBQ</span><span class="es">Barbacoa</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="pizza"><span class="en">Pizza</span><span class="es">Pizza</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="desserts"><span class="en">Desserts</span><span class="es">Postres</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="coffee"><span class="en">Coffee</span><span class="es">Café</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="latenight"><span class="en">Late Night</span><span class="es">Tarde en la Noche</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="kidfriendly"><span class="en">Kid Friendly</span><span class="es">Para Niños</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="largegroups"><span class="en">Large Groups</span><span class="es">Grupos Grandes</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="affordable"><span class="en">Affordable</span><span class="es">Económico</span></button>
-                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-neon-pink/50 transition" data-filter="luxury"><span class="en">Luxury</span><span class="es">Lujo</span></button>
+                            <button class="dine-filter-btn active bg-gradient-to-r from-gold to-terra text-cream font-bold px-4 py-1.5 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="breakfast"><span class="en">Breakfast</span><span class="es">Desayuno</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="lunch"><span class="en">Lunch</span><span class="es">Almuerzo</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="dinner"><span class="en">Dinner</span><span class="es">Cena</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="buffets"><span class="en">Buffets</span><span class="es">Bufés</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="finedining"><span class="en">Fine Dining</span><span class="es">Alta Cocina</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="steakhouses"><span class="en">Steakhouses</span><span class="es">Cortes de Carne</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="italian"><span class="en">Italian</span><span class="es">Italiano</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="mexican"><span class="en">Mexican</span><span class="es">Mexicano</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="asian"><span class="en">Asian</span><span class="es">Asiático</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="seafood"><span class="en">Seafood</span><span class="es">Mariscos</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="bbq"><span class="en">BBQ</span><span class="es">Barbacoa</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="pizza"><span class="en">Pizza</span><span class="es">Pizza</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="desserts"><span class="en">Desserts</span><span class="es">Postres</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="coffee"><span class="en">Coffee</span><span class="es">Café</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="latenight"><span class="en">Late Night</span><span class="es">Tarde en la Noche</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="kidfriendly"><span class="en">Kid Friendly</span><span class="es">Para Niños</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="largegroups"><span class="en">Large Groups</span><span class="es">Grupos Grandes</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="affordable"><span class="en">Affordable</span><span class="es">Económico</span></button>
+                            <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="luxury"><span class="en">Luxury</span><span class="es">Lujo</span></button>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="dining-grid">
@@ -732,7 +742,7 @@
                                     <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=75" alt="Hash House A Go Go" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥞">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Hash House A Go Go</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Breakfast / Large Groups</span><span class="es">Desayuno / Grupos Grandes</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Breakfast / Large Groups</span><span class="es">Desayuno / Grupos Grandes</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Twisted farm food with massive, shareable portions. Perfect for a huge family breakfast.</span>
                                             <span class="es">Comida de granja con porciones masivas y para compartir. Perfecto para un gran desayuno familiar.</span>
@@ -752,7 +762,7 @@
                                     <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=75" alt="Earl of Sandwich" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥪">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Earl of Sandwich</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Lunch / Affordable</span><span class="es">Almuerzo / Económico</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Lunch / Affordable</span><span class="es">Almuerzo / Económico</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Famous hot sandwiches, perfect for a quick, delicious, and budget-friendly bite.</span>
                                             <span class="es">Famosos sándwiches calientes, perfectos para un bocado rápido, delicioso y económico.</span>
@@ -772,7 +782,7 @@
                                     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=75" alt="Eiffel Tower Restaurant" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🗼">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Eiffel Tower Restaurant</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Dinner / Fine Dining</span><span class="es">Cena / Alta Cocina</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Dinner / Fine Dining</span><span class="es">Cena / Alta Cocina</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">French cuisine with spectacular elevated views of the Bellagio Fountains.</span>
                                             <span class="es">Cocina francesa con vistas espectaculares y elevadas a las fuentes del Bellagio.</span>
@@ -792,7 +802,7 @@
                                     <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=75" alt="Bacchanal Buffet" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍽️">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Bacchanal Buffet</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Buffets / Luxury</span><span class="es">Bufés / Lujo</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Buffets / Luxury</span><span class="es">Bufés / Lujo</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Consistently voted the best buffet in Vegas, featuring hundreds of premium daily offerings.</span>
                                             <span class="es">Constantemente votado como el mejor bufé de Las Vegas, con cientos de opciones premium diarias.</span>
@@ -812,7 +822,7 @@
                                     <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=75" alt="Golden Steer Steakhouse" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥩">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Golden Steer Steakhouse</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Steakhouses / Dinner</span><span class="es">Cortes / Cena</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Steakhouses / Dinner</span><span class="es">Cortes / Cena</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Las Vegas' oldest steakhouse, famously frequented by the Rat Pack and Elvis.</span>
                                             <span class="es">El asador más antiguo de Las Vegas, famoso por ser frecuentado por el Rat Pack y Elvis.</span>
@@ -832,7 +842,7 @@
                                     <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=75" alt="Carmine's" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍝">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Carmine's</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Italian / Large Groups</span><span class="es">Italiano / Grupos Grandes</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Italian / Large Groups</span><span class="es">Italiano / Grupos Grandes</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Massive family-style Italian portions located in the Forum Shops. Great for feeding a crowd.</span>
                                             <span class="es">Porciones masivas de comida italiana estilo familiar. Genial para alimentar a una multitud.</span>
@@ -852,7 +862,7 @@
                                     <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=75" alt="Javier's" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🌮">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Javier's</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Mexican / Luxury</span><span class="es">Mexicano / Lujo</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Mexican / Luxury</span><span class="es">Mexicano / Lujo</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Upscale Mexican cuisine, beautiful ambiance, and premium margaritas located in Aria.</span>
                                             <span class="es">Alta cocina mexicana, hermoso ambiente y margaritas premium ubicadas en Aria.</span>
@@ -872,7 +882,7 @@
                                     <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=75" alt="Din Tai Fung" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥟">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Din Tai Fung</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Asian / Lunch</span><span class="es">Asiático / Almuerzo</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Asian / Lunch</span><span class="es">Asiático / Almuerzo</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">World-renowned Taiwanese soup dumplings and noodles in a spectacular setting.</span>
                                             <span class="es">Famosos dumplings de sopa y fideos taiwaneses en un entorno espectacular.</span>
@@ -892,7 +902,7 @@
                                     <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=600&q=75" alt="Joe's Seafood" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🦀">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Joe's Seafood</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Seafood / Fine Dining</span><span class="es">Mariscos / Alta Cocina</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Seafood / Fine Dining</span><span class="es">Mariscos / Alta Cocina</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Famous for incredible Florida stone crab claws, prime steaks, and signature pie.</span>
                                             <span class="es">Famoso por las increíbles pinzas de cangrejo de piedra, cortes de carne y su tarta exclusiva.</span>
@@ -912,7 +922,7 @@
                                     <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=75" alt="Rollin Smoke Barbeque" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍖">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Rollin Smoke Barbeque</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">BBQ / Affordable</span><span class="es">Barbacoa / Económico</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">BBQ / Affordable</span><span class="es">Barbacoa / Económico</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Incredible, authentic Southern-style BBQ located just off the strip. Casual and messy!</span>
                                             <span class="es">Increíble y auténtica barbacoa al estilo sureño cerca del Strip. ¡Casual y deliciosa!</span>
@@ -932,7 +942,7 @@
                                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=75" alt="Pizza Rock" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍕">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Pizza Rock</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Pizza / Late Night</span><span class="es">Pizza / Tarde en la Noche</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Pizza / Late Night</span><span class="es">Pizza / Tarde en la Noche</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Award-winning gourmet pizzas in downtown Vegas with an awesome, energetic vibe.</span>
                                             <span class="es">Pizzas gourmet galardonadas en el centro de Las Vegas con un ambiente increíble.</span>
@@ -952,7 +962,7 @@
                                     <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=75" alt="Black Tap Craft Burgers" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🥤">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Black Tap Craft Burgers</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Desserts / Kid Friendly</span><span class="es">Postres / Para Niños</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Desserts / Kid Friendly</span><span class="es">Postres / Para Niños</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Famed for their towering, over-the-top CrazyShake milkshakes and craft burgers.</span>
                                             <span class="es">Famoso por sus imponentes y exagerados batidos CrazyShake y hamburguesas artesanales.</span>
@@ -972,7 +982,7 @@
                                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=75" alt="Vesta Coffee Roasters" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="☕">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Vesta Coffee Roasters</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Coffee / Breakfast</span><span class="es">Café / Desayuno</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Coffee / Breakfast</span><span class="es">Café / Desayuno</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Premium specialty coffee and fresh pastries located in the vibrant Arts District.</span>
                                             <span class="es">Café de especialidad premium y pasteles frescos ubicados en el vibrante Arts District.</span>
@@ -992,7 +1002,7 @@
                                     <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=75" alt="Peppermill Restaurant" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍳">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Peppermill Restaurant</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Late Night / Breakfast</span><span class="es">Tarde en la Noche / Desayuno</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Late Night / Breakfast</span><span class="es">Tarde en la Noche / Desayuno</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">A classic 24/7 Vegas institution with neon lights, fire pits, and huge diner portions.</span>
                                             <span class="es">Una institución clásica 24/7 con luces de neón y enormes porciones de comida.</span>
@@ -1012,7 +1022,7 @@
                                     <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=75" alt="Tacos El Gordo" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🌮">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Tacos El Gordo</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Affordable / Mexican</span><span class="es">Económico / Mexicano</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Affordable / Mexican</span><span class="es">Económico / Mexicano</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Authentic Tijuana-style tacos on the Strip that are incredibly delicious and budget-friendly.</span>
                                             <span class="es">Auténticos tacos estilo Tijuana en el Strip que son increíblemente deliciosos y económicos.</span>
@@ -1032,7 +1042,7 @@
                                     <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=75" alt="Nobu" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🍣">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Nobu</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Luxury / Asian</span><span class="es">Lujo / Asiático</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Luxury / Asian</span><span class="es">Lujo / Asiático</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">Exquisite Japanese-Peruvian fusion cuisine from the world-famous chef at Caesars Palace.</span>
                                             <span class="es">Exquisita cocina de fusión japonesa-peruana del chef de fama mundial en Caesars Palace.</span>
@@ -1052,7 +1062,7 @@
                                     <img src="https://images.unsplash.com/photo-1440342359743-84fcb8c21f21?auto=format&fit=crop&w=600&q=75" alt="Rainforest Cafe" class="w-full h-40 object-cover" loading="lazy" onerror="imgFallback(this)" data-emoji="🌴">
                                     <div class="p-5 pb-0">
                                         <h3 class="font-display text-base font-600 mb-1">Rainforest Cafe</h3>
-                                        <p class="text-xs text-neon-pink font-bold uppercase mb-2"><span class="en">Kid Friendly / Lunch</span><span class="es">Para Niños / Almuerzo</span></p>
+                                        <p class="text-xs text-terra font-bold uppercase mb-2"><span class="en">Kid Friendly / Lunch</span><span class="es">Para Niños / Almuerzo</span></p>
                                         <p class="text-sm text-ink/70 dark:text-cream/60">
                                             <span class="en">An immersive jungle-themed dining experience with animatronics that young kids will love.</span>
                                             <span class="es">Una experiencia inmersiva con temática de selva con animatrónicos que a los niños les encantará.</span>
@@ -1076,7 +1086,7 @@
 
     <!-- ================= RSVP ================= -->
     <section id="rsvp" class="py-24 scroll-mt-24 relative overflow-hidden bg-panel">
-        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 20%, rgba(255,61,138,.15), transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(53,224,255,.12), transparent 50%);"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 20%, rgba(232,164,76,.18), transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(192,91,60,.15), transparent 50%);"></div>
         <div class="max-w-2xl mx-auto px-4 relative">
             <div class="text-center mb-12 reveal">
                 <h2 class="font-display text-3xl md:text-4xl mb-4 neon-title">RSVP</h2>
@@ -1088,7 +1098,7 @@
             </div>
 
             <form id="vacationRsvpForm" class="bg-cream/5 p-8 rounded-2xl backdrop-blur-sm border border-cream/15">
-                <h3 class="font-bold text-marquee-gold mb-4 border-b border-cream/15 pb-2">
+                <h3 class="font-bold text-gold mb-4 border-b border-cream/15 pb-2">
                     <span class="en">Primary Guest</span><span class="es">Invitado Principal</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1096,13 +1106,13 @@
                         <label class="block text-sm mb-1 text-cream/80">
                             <span class="en">First Name</span><span class="es">Nombre</span>
                         </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-neon-pink">
+                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
                     </div>
                     <div>
                         <label class="block text-sm mb-1 text-cream/80">
                             <span class="en">Last Name</span><span class="es">Apellido</span>
                         </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-neon-pink">
+                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
                     </div>
                 </div>
 
@@ -1117,7 +1127,7 @@
                     </button>
                 </div>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-neon-pink via-marquee-gold to-neon-cyan text-ink font-bold py-4 rounded-full transition tracking-wider uppercase text-sm hover:opacity-90 shadow-lg shadow-neon-pink/25">
+                <button type="submit" class="w-full bg-gradient-to-r from-gold via-terra to-terra text-cream font-bold py-4 rounded-full transition tracking-wider uppercase text-sm hover:opacity-90 shadow-lg shadow-terra/25">
                     <span class="en">Submit RSVP</span><span class="es">Enviar Respuesta</span>
                 </button>
             </form>
@@ -1127,8 +1137,9 @@
     <!-- ================= FOOTER ================= -->
     <footer class="bg-ink text-cream/50 py-12 text-center text-sm border-t border-cream/5">
         <div class="max-w-6xl mx-auto px-4">
-            <p class="font-display text-lg text-cream mb-2"><span class="text-neon-pink">VEGAS</span> ’27</p>
-            <p class="text-cream/60"><span class="en">See you under the lights.</span><span class="es">Nos vemos bajo las luces.</span></p>
+            <p class="font-display text-lg text-cream mb-2"><span class="text-gold">VEGAS</span> ’27</p>
+            <p class="script-accent text-gold/80 text-xl">family trip</p>
+            <p class="text-cream/60"><span class="en">See you out in the desert.</span><span class="es">Nos vemos en el desierto.</span></p>
             <p class="mt-4 text-xs opacity-50">© 2027 Family Event Planners</p>
         </div>
     </footer>
@@ -1185,7 +1196,7 @@
         function addGuest(type) {
             const container = document.getElementById('additional-guests');
             const row = document.createElement('div');
-            row.className = 'grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end fade-in border-l-2 border-marquee-gold pl-3 ml-1';
+            row.className = 'grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end fade-in border-l-2 border-gold pl-3 ml-1';
 
             const typeLabelEn = type === 'Adult' ? 'Adult' : 'Child';
             const typeLabelEs = type === 'Adult' ? 'Adulto' : 'Niño/a';
@@ -1196,14 +1207,14 @@
                         <span class="en">${typeLabelEn} First Name</span>
                         <span class="es">Nombre (${typeLabelEs})</span>
                     </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-neon-pink">
+                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
                 </div>
                 <div class="md:col-span-5">
                     <label class="block text-sm mb-1 text-cream/70">
                         <span class="en">Last Name</span>
                         <span class="es">Apellido</span>
                     </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-neon-pink">
+                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
                 </div>
                 <div class="md:col-span-2 pb-1">
                     <button type="button" onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:text-red-300 text-sm font-bold w-full text-left md:text-center">
@@ -1239,11 +1250,11 @@
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     filterBtns.forEach(b => {
-                        b.classList.remove('bg-gradient-to-r', 'from-neon-pink', 'to-marquee-gold', 'text-ink', 'font-bold', 'active');
+                        b.classList.remove('bg-gradient-to-r', 'from-gold', 'to-terra', 'text-cream', 'font-bold', 'active');
                         b.classList.add('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
                     });
                     btn.classList.remove('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
-                    btn.classList.add('bg-gradient-to-r', 'from-neon-pink', 'to-marquee-gold', 'text-ink', 'font-bold', 'active');
+                    btn.classList.add('bg-gradient-to-r', 'from-gold', 'to-terra', 'text-cream', 'font-bold', 'active');
 
                     const filterValue = btn.getAttribute('data-filter');
                     cards.forEach(card => {
