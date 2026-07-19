@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,19 +16,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'ink': '#2B1D26',
-                        'panel': '#372632',
-                        'panel2': '#453140',
-                        'terra': '#C05B3C',
-                        'sage': '#7E8F63',
-                        'gold': '#E8A44C',
-                        'cream': '#F9F1E1',
-                        'sand': '#F1E5CF'
+                        'ink': '#0B0D14',
+                        'panel': '#141828',
+                        'panel2': '#1B2036',
+                        'terra': '#FF3D8A',
+                        'sage': '#35E0FF',
+                        'gold': '#FFC94A',
+                        'cream': '#F5F2EA',
+                        'sand': '#EFE7D8'
                     },
                     fontFamily: {
                         'sans': ['Outfit', 'sans-serif'],
-                        'display': ['Fjalla One', 'sans-serif'],
-                        'script': ['Caveat', 'cursive'],
+                        'display': ['Unbounded', 'sans-serif'],
                     }
                 }
             }
@@ -42,61 +41,61 @@
 
         /* ---------- Neon signature (hero + section titles) ---------- */
         .neon-title {
-            background: linear-gradient(100deg, #F5C46B 0%, #E8853D 50%, #C05B3C 100%);
+            background: linear-gradient(100deg, #FFC94A 0%, #FF3D8A 45%, #35E0FF 100%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: shimmer 8s ease-in-out infinite;
+            animation: shimmer 6s ease-in-out infinite;
         }
         @keyframes shimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
         .neon-glow {
-            text-shadow: 0 2px 24px rgba(43, 29, 38, 0.6);
+            text-shadow: 0 0 18px rgba(255, 61, 138, 0.35), 0 0 45px rgba(53, 224, 255, 0.2);
         }
         .marquee-underline {
             height: 3px;
             border-radius: 999px;
-            background: linear-gradient(90deg, #E8A44C, #C05B3C, #7E8F63);
-            opacity: .85;
+            background: linear-gradient(90deg, #FFC94A, #FF3D8A, #35E0FF);
+            box-shadow: 0 0 12px rgba(255, 61, 138, 0.5);
         }
-        .script-accent { font-family: 'Caveat', cursive; }
 
         /* ---------- Hero ---------- */
         .hero-bg {
             background-image:
-                linear-gradient(to bottom, rgba(43, 29, 38, 0.25) 0%, rgba(43, 29, 38, 0.45) 55%, rgba(43, 29, 38, 0.85) 100%),
-                radial-gradient(ellipse at 50% 62%, rgba(245, 177, 92, 0.35), transparent 55%),
-                url('https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(to bottom, rgba(11, 13, 20, 0.55), rgba(11, 13, 20, 0.92)),
+                radial-gradient(ellipse at 20% 20%, rgba(255, 61, 138, 0.25), transparent 55%),
+                radial-gradient(ellipse at 80% 30%, rgba(53, 224, 255, 0.2), transparent 55%),
+                url('https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-color: #3A2830;
+            background-color: #0B0D14;
         }
         .ticket-chip {
-            border: 1px dashed rgba(232, 164, 76, 0.8);
-            background: rgba(232, 164, 76, 0.12);
+            border: 1px dashed rgba(255, 201, 74, 0.7);
+            background: rgba(255, 201, 74, 0.08);
         }
 
         /* ---------- Glass nav ---------- */
         .glass {
-            background: rgba(249, 241, 225, 0.88);
+            background: rgba(245, 242, 234, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(43, 29, 38, 0.08);
+            border-bottom: 1px solid rgba(11, 13, 20, 0.06);
         }
         .dark .glass {
-            background: rgba(43, 29, 38, 0.8);
-            border-bottom: 1px solid rgba(249, 241, 225, 0.08);
+            background: rgba(11, 13, 20, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         /* ---------- Cards ---------- */
         .card-hover { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
         .card-hover:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 36px -12px rgba(192, 91, 60, 0.4), 0 6px 20px -8px rgba(232, 164, 76, 0.25);
-            border-color: rgba(192, 91, 60, 0.45) !important;
+            box-shadow: 0 12px 40px -12px rgba(255, 61, 138, 0.35), 0 6px 24px -8px rgba(53, 224, 255, 0.2);
+            border-color: rgba(255, 61, 138, 0.4) !important;
         }
 
         /* ---------- Collapsible sections ---------- */
@@ -129,11 +128,11 @@
         /* Image fallback tiles */
         .img-fallback {
             display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #453140 0%, #7a4636 50%, #b7793f 100%);
+            background: linear-gradient(135deg, #1B2036 0%, #2a1b3d 50%, #3d1b30 100%);
             font-size: 3rem;
         }
         html:not(.dark) .img-fallback {
-            background: linear-gradient(135deg, #F1E5CF 0%, #f3d3b8 50%, #e3e6d2 100%);
+            background: linear-gradient(135deg, #EFE7D8 0%, #f7d9e4 50%, #d9eef7 100%);
         }
     </style>
 </head>
@@ -143,9 +142,8 @@
     <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="#" class="flex items-baseline gap-2">
-                    <span class="font-display text-lg md:text-xl tracking-wide"><span class="text-terra">VEGAS</span><span class="text-ink dark:text-cream"> ’27</span></span>
-                    <span class="script-accent text-gold text-lg hidden sm:inline">family trip</span>
+                <a href="#" class="font-display text-lg md:text-xl font-800 tracking-wide">
+                    <span class="text-terra">VEGAS</span><span class="text-ink dark:text-cream"> ’27</span>
                 </a>
 
                 <!-- Desktop links -->
@@ -174,7 +172,7 @@
 
                     <button id="darkModeToggle" class="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-cream/10 transition" title="Toggle light/dark">🌓</button>
 
-                    <a href="#rsvp" class="bg-gradient-to-r from-gold to-terra text-cream font-bold px-6 py-2 rounded-full shadow-lg shadow-terra/30 hover:shadow-terra/50 hover:scale-105 transition">
+                    <a href="#rsvp" class="bg-gradient-to-r from-terra to-gold text-ink font-bold px-6 py-2 rounded-full shadow-lg shadow-terra/30 hover:shadow-terra/50 hover:scale-105 transition">
                         RSVP
                     </a>
                 </div>
@@ -196,7 +194,7 @@
                 <button onclick="setLanguage('en')"><img src="https://flagcdn.com/w40/us.png" width="26" alt="US Flag" class="rounded-sm"></button>
                 <button onclick="setLanguage('es')"><img src="https://flagcdn.com/w40/pr.png" width="26" alt="Puerto Rico Flag" class="rounded-sm"></button>
                 <button id="darkModeToggleMobile" class="p-2 rounded-full hover:bg-ink/10 dark:hover:bg-cream/10">🌓</button>
-                <a href="#rsvp" class="ml-auto bg-gradient-to-r from-gold to-terra text-cream font-bold px-5 py-2 rounded-full">RSVP</a>
+                <a href="#rsvp" class="ml-auto bg-gradient-to-r from-terra to-gold text-ink font-bold px-5 py-2 rounded-full">RSVP</a>
             </div>
         </div>
     </nav>
@@ -204,26 +202,22 @@
     <!-- ================= HERO ================= -->
     <header class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="text-center px-4 fade-in z-10 mt-16 max-w-4xl">
-            <p class="script-accent text-3xl md:text-5xl text-gold mb-3 drop-shadow-lg">
-                <span class="en">Save the Date!</span>
-                <span class="es">¡Aparta la Fecha!</span>
-            </p>
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl leading-tight mb-5 text-cream neon-glow uppercase">
-                <span class="en">Family Vacation<br><span class="neon-title">in Las Vegas</span></span>
-                <span class="es">Vacaciones Familiares<br><span class="neon-title">en Las Vegas</span></span>
-            </h1>
-            <div class="ticket-chip inline-flex items-center gap-2 px-5 py-2 rounded-full text-cream text-xs md:text-sm tracking-[0.25em] uppercase mb-8">
-                <span class="text-gold">✦</span>
+            <div class="ticket-chip inline-flex items-center gap-2 px-5 py-2 rounded-full text-gold text-xs md:text-sm tracking-[0.25em] uppercase mb-8">
+                <span>★</span>
                 <span class="en">May 13 – 17, 2027 • Las Vegas, Nevada</span>
                 <span class="es">13 – 17 de Mayo, 2027 • Las Vegas, Nevada</span>
-                <span class="text-gold">✦</span>
+                <span>★</span>
             </div>
-            <p class="text-cream/85 text-base md:text-lg mb-10 max-w-xl mx-auto">
-                <span class="en">Red rocks, golden sunsets, and the whole family in one place.</span>
-                <span class="es">Rocas rojas, atardeceres dorados y toda la familia en un solo lugar.</span>
+            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-800 leading-tight mb-4 text-cream neon-glow">
+                <span class="en">FAMILY<br><span class="neon-title">VACATION ’27</span></span>
+                <span class="es">VACACIONES<br><span class="neon-title">FAMILIARES ’27</span></span>
+            </h1>
+            <p class="text-cream/70 text-base md:text-lg mb-10 max-w-xl mx-auto">
+                <span class="en">Five days. One city that never sleeps. The whole family, together.</span>
+                <span class="es">Cinco días. Una ciudad que nunca duerme. Toda la familia, juntos.</span>
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#rsvp" class="bg-gradient-to-r from-gold to-terra text-cream font-bold tracking-wide px-10 py-4 rounded-full shadow-xl shadow-terra/40 hover:scale-105 transition">
+                <a href="#rsvp" class="bg-gradient-to-r from-terra to-gold text-ink font-bold tracking-wide px-10 py-4 rounded-full shadow-xl shadow-terra/30 hover:scale-105 transition">
                     <span class="en">RSVP Now</span><span class="es">Confirmar Asistencia</span>
                 </a>
                 <a href="#schedule" class="nav-link border border-cream/40 text-cream tracking-wide px-10 py-4 rounded-full hover:bg-cream hover:text-ink transition" data-expand="schedule">
@@ -357,7 +351,7 @@
                 <div class="collapse-inner">
                     <div class="pt-10">
                         <div class="flex flex-wrap justify-center gap-3 text-sm mb-10">
-                            <button class="filter-btn active bg-gradient-to-r from-gold to-terra text-cream font-bold px-5 py-2 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
+                            <button class="filter-btn active bg-gradient-to-r from-terra to-gold text-ink font-bold px-5 py-2 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
                             <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="free"><span class="en">Free</span><span class="es">Gratis</span></button>
                             <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="outdoor"><span class="en">Outdoor</span><span class="es">Al Aire Libre</span></button>
                             <button class="filter-btn bg-sand dark:bg-panel2 px-5 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="family"><span class="en">Family/Kids</span><span class="es">Familia/Niños</span></button>
@@ -543,7 +537,7 @@
                         <div class="mb-16">
                             <button class="collapse-toggle w-full group" data-target="jesse-body" aria-expanded="false" aria-controls="jesse-body">
                                 <div class="text-center">
-                                    <h3 class="font-display text-xl md:text-2xl inline-flex items-center gap-3">
+                                    <h3 class="font-display text-xl md:text-2xl font-600 inline-flex items-center gap-3">
                                         <span class="text-gold">★</span>
                                         <span class="neon-title"><span class="en">Jesse's Choices</span><span class="es">Las Elecciones de Jesse</span></span>
                                         <span class="text-gold">★</span>
@@ -579,7 +573,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://buddyvlasvegas.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://buddyvlasvegas.com/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Buddy+Vs+Ristorante+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -602,7 +596,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://runchickenrun.com/las-vegas/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://runchickenrun.com/las-vegas/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Yardbird+Table+and+Bar+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -625,7 +619,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://echoandrig.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://echoandrig.com/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Echo+and+Rig+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -648,7 +642,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://www.lindomichoacan.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://www.lindomichoacan.com/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Lindo+Michoacan+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -671,7 +665,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://www.northitalia.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://www.northitalia.com/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=North+Italia+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -694,7 +688,7 @@
                                     </div>
                                     <div class="p-5 pt-4">
                                         <div class="flex gap-2 border-t border-ink/10 dark:border-cream/10 pt-4">
-                                            <a href="https://herbsandrye.com/" target="_blank" class="flex-1 bg-gradient-to-r from-gold to-terra text-cream text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
+                                            <a href="https://herbsandrye.com/" target="_blank" class="flex-1 bg-gradient-to-r from-terra to-gold text-ink text-center text-xs font-bold py-2 rounded-full hover:opacity-90 transition"><span class="en">Menu</span><span class="es">Menú</span></a>
                                             <a href="https://maps.google.com/?q=Herbs+and+Rye+Las+Vegas" target="_blank" class="flex-1 bg-ink/10 dark:bg-cream/10 text-center text-xs font-bold py-2 rounded-full hover:bg-ink/20 dark:hover:bg-cream/20 transition"><span class="en">Map</span><span class="es">Mapa</span></a>
                                         </div>
                                     </div>
@@ -713,7 +707,7 @@
                         </div>
 
                         <div class="flex flex-wrap justify-center gap-2 text-xs sm:text-sm mb-10 max-w-5xl mx-auto">
-                            <button class="dine-filter-btn active bg-gradient-to-r from-gold to-terra text-cream font-bold px-4 py-1.5 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
+                            <button class="dine-filter-btn active bg-gradient-to-r from-terra to-gold text-ink font-bold px-4 py-1.5 rounded-full" data-filter="all"><span class="en">All</span><span class="es">Todo</span></button>
                             <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="breakfast"><span class="en">Breakfast</span><span class="es">Desayuno</span></button>
                             <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="lunch"><span class="en">Lunch</span><span class="es">Almuerzo</span></button>
                             <button class="dine-filter-btn bg-sand dark:bg-panel2 px-4 py-1.5 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-filter="dinner"><span class="en">Dinner</span><span class="es">Cena</span></button>
@@ -1086,7 +1080,7 @@
 
     <!-- ================= RSVP ================= -->
     <section id="rsvp" class="py-24 scroll-mt-24 relative overflow-hidden bg-panel">
-        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 20%, rgba(232,164,76,.18), transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(192,91,60,.15), transparent 50%);"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 20%, rgba(255,61,138,.15), transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(53,224,255,.12), transparent 50%);"></div>
         <div class="max-w-2xl mx-auto px-4 relative">
             <div class="text-center mb-12 reveal">
                 <h2 class="font-display text-3xl md:text-4xl mb-4 neon-title">RSVP</h2>
@@ -1106,13 +1100,13 @@
                         <label class="block text-sm mb-1 text-cream/80">
                             <span class="en">First Name</span><span class="es">Nombre</span>
                         </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
+                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                     </div>
                     <div>
                         <label class="block text-sm mb-1 text-cream/80">
                             <span class="en">Last Name</span><span class="es">Apellido</span>
                         </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
+                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                     </div>
                 </div>
 
@@ -1127,7 +1121,7 @@
                     </button>
                 </div>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-gold via-terra to-terra text-cream font-bold py-4 rounded-full transition tracking-wider uppercase text-sm hover:opacity-90 shadow-lg shadow-terra/25">
+                <button type="submit" class="w-full bg-gradient-to-r from-terra via-gold to-sage text-ink font-bold py-4 rounded-full transition tracking-wider uppercase text-sm hover:opacity-90 shadow-lg shadow-terra/25">
                     <span class="en">Submit RSVP</span><span class="es">Enviar Respuesta</span>
                 </button>
             </form>
@@ -1137,9 +1131,8 @@
     <!-- ================= FOOTER ================= -->
     <footer class="bg-ink text-cream/50 py-12 text-center text-sm border-t border-cream/5">
         <div class="max-w-6xl mx-auto px-4">
-            <p class="font-display text-lg text-cream mb-2"><span class="text-gold">VEGAS</span> ’27</p>
-            <p class="script-accent text-gold/80 text-xl">family trip</p>
-            <p class="text-cream/60"><span class="en">See you out in the desert.</span><span class="es">Nos vemos en el desierto.</span></p>
+            <p class="font-display text-lg text-cream mb-2"><span class="text-terra">VEGAS</span> ’27</p>
+            <p class="text-cream/60"><span class="en">See you under the lights.</span><span class="es">Nos vemos bajo las luces.</span></p>
             <p class="mt-4 text-xs opacity-50">© 2027 Family Event Planners</p>
         </div>
     </footer>
@@ -1207,14 +1200,14 @@
                         <span class="en">${typeLabelEn} First Name</span>
                         <span class="es">Nombre (${typeLabelEs})</span>
                     </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
+                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                 </div>
                 <div class="md:col-span-5">
                     <label class="block text-sm mb-1 text-cream/70">
                         <span class="en">Last Name</span>
                         <span class="es">Apellido</span>
                     </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-gold">
+                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                 </div>
                 <div class="md:col-span-2 pb-1">
                     <button type="button" onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:text-red-300 text-sm font-bold w-full text-left md:text-center">
@@ -1250,11 +1243,11 @@
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     filterBtns.forEach(b => {
-                        b.classList.remove('bg-gradient-to-r', 'from-gold', 'to-terra', 'text-cream', 'font-bold', 'active');
+                        b.classList.remove('bg-gradient-to-r', 'from-terra', 'to-gold', 'text-ink', 'font-bold', 'active');
                         b.classList.add('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
                     });
                     btn.classList.remove('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
-                    btn.classList.add('bg-gradient-to-r', 'from-gold', 'to-terra', 'text-cream', 'font-bold', 'active');
+                    btn.classList.add('bg-gradient-to-r', 'from-terra', 'to-gold', 'text-ink', 'font-bold', 'active');
 
                     const filterValue = btn.getAttribute('data-filter');
                     cards.forEach(card => {
