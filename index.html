@@ -125,6 +125,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ---------- Family Tree ---------- */
+        #treeWrap {
+            position: relative; height: 72vh; min-height: 500px;
+            border-radius: 1rem; overflow: hidden; touch-action: none; cursor: grab;
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(255, 61, 138, 0.07), transparent 55%),
+                radial-gradient(ellipse at 78% 85%, rgba(53, 224, 255, 0.06), transparent 55%),
+                #F5F2EA;
+            border: 1px solid rgba(11, 13, 20, 0.08);
+        }
+        .dark #treeWrap {
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(255, 61, 138, 0.1), transparent 55%),
+                radial-gradient(ellipse at 78% 85%, rgba(53, 224, 255, 0.08), transparent 55%),
+                #10131f;
+            border-color: rgba(245, 242, 234, 0.08);
+        }
+        #treeWrap.grabbing { cursor: grabbing; }
+        .tnode { cursor: pointer; }
+        .tnode rect.card { fill: #FFFFFF; stroke-width: 2; transition: opacity .3s ease; }
+        .dark .tnode rect.card { fill: #1B2036; }
+        .tnode text { font-family: 'Outfit', sans-serif; fill: #0B0D14; pointer-events: none; }
+        .dark .tnode text { fill: #F5F2EA; }
+        .tnode text.sub { fill: rgba(11, 13, 20, 0.55); }
+        .dark .tnode text.sub { fill: rgba(245, 242, 234, 0.5); }
+        .tnode.dim, .tedge.dim { opacity: 0.12; }
+        .tnode.hl rect.card { filter: drop-shadow(0 0 10px rgba(255, 201, 74, 0.9)); stroke-width: 3; }
+        .tedge { fill: none; stroke-width: 2; opacity: 0.6; }
+        .tedge.spouse { opacity: 0.9; stroke-width: 2.5; }
+        .tnode.deceased rect.card { stroke-dasharray: 5 3; }
+        .tree-modal-bg { background: rgba(11, 13, 20, 0.7); backdrop-filter: blur(4px); }
+
         /* Image fallback tiles */
         .img-fallback {
             display: flex; align-items: center; justify-content: center;
@@ -160,6 +192,9 @@
                     <a href="#dining" class="nav-link hover:text-terra transition" data-expand="dining">
                         <span class="en">Dining</span><span class="es">Restaurantes</span>
                     </a>
+                    <a href="#familytree" class="hover:text-terra transition">
+                        <span class="en">Family Tree</span><span class="es">Árbol Familiar</span>
+                    </a>
 
                     <div class="flex items-center space-x-3 border-l border-ink/20 dark:border-cream/20 pl-4">
                         <button onclick="setLanguage('en')" class="hover:scale-110 transition focus:outline-none" title="English">
@@ -190,6 +225,7 @@
             <a href="#hotel" class="block py-2 border-b border-ink/10 dark:border-cream/10"><span class="en">Hotel</span><span class="es">Hotel</span></a>
             <a href="#explore" class="nav-link block py-2 border-b border-ink/10 dark:border-cream/10" data-expand="explore"><span class="en">Things To Do</span><span class="es">Qué Hacer</span></a>
             <a href="#dining" class="nav-link block py-2 border-b border-ink/10 dark:border-cream/10" data-expand="dining"><span class="en">Dining</span><span class="es">Restaurantes</span></a>
+            <a href="#familytree" class="block py-2 border-b border-ink/10 dark:border-cream/10"><span class="en">Family Tree</span><span class="es">Árbol Familiar</span></a>
             <div class="flex items-center gap-4 py-2">
                 <button onclick="setLanguage('en')"><img src="https://flagcdn.com/w40/us.png" width="26" alt="US Flag" class="rounded-sm"></button>
                 <button onclick="setLanguage('es')"><img src="https://flagcdn.com/w40/pr.png" width="26" alt="Puerto Rico Flag" class="rounded-sm"></button>
@@ -1386,6 +1422,69 @@
         </div>
     </section>
 
+    <!-- ================= FAMILY TREE ================= -->
+    <section id="familytree" class="py-20 scroll-mt-24 bg-cream dark:bg-panel transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center reveal mb-8">
+                <p class="text-gold text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+                    <span class="en">Our Roots</span><span class="es">Nuestras Raíces</span>
+                </p>
+                <h2 class="font-display text-2xl md:text-4xl mb-4"><span class="neon-title"><span class="en">Family Tree</span><span class="es">Árbol Familiar</span></span></h2>
+                <div class="marquee-underline w-20 mx-auto mb-4"></div>
+                <p class="text-sm text-ink/60 dark:text-cream/50 max-w-2xl mx-auto">
+                    <span class="en">A living tree that grows with every RSVP. Submit yours below to add your branch, then tap any name to explore their family.</span>
+                    <span class="es">Un árbol vivo que crece con cada confirmación. Envía la tuya abajo para agregar tu rama, y toca cualquier nombre para explorar su familia.</span>
+                </p>
+            </div>
+
+            <div id="treeBanner" class="hidden mb-5 text-center text-xs font-bold text-ink bg-gold/90 rounded-full px-5 py-2.5 max-w-2xl mx-auto"></div>
+
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-3 text-xs sm:text-sm">
+                <input id="treeSearch" type="text" placeholder="🔍 Search name…" class="bg-sand dark:bg-panel2 border border-ink/10 dark:border-cream/10 rounded-full px-4 py-2 w-48 outline-none focus:ring-2 focus:ring-gold text-ink dark:text-cream">
+                <button class="tree-filter-btn active bg-gradient-to-r from-terra to-gold text-ink font-bold px-4 py-2 rounded-full" data-tfilter="all"><span class="en">Everyone</span><span class="es">Todos</span></button>
+                <button class="tree-filter-btn bg-sand dark:bg-panel2 px-4 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-tfilter="ortiz"><span class="en">Ortiz Branch</span><span class="es">Rama Ortiz</span></button>
+                <button class="tree-filter-btn bg-sand dark:bg-panel2 px-4 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-tfilter="lopez"><span class="en">Lopez Branch</span><span class="es">Rama Lopez</span></button>
+                <button class="tree-filter-btn bg-sand dark:bg-panel2 px-4 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-tfilter="attendees"><span class="en">Attending ’27</span><span class="es">Asistentes ’27</span></button>
+                <button class="tree-filter-btn bg-sand dark:bg-panel2 px-4 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-tfilter="living"><span class="en">Living</span><span class="es">Vivos</span></button>
+                <button class="tree-filter-btn bg-sand dark:bg-panel2 px-4 py-2 rounded-full border border-ink/10 dark:border-cream/10 hover:border-terra/50 transition" data-tfilter="deceased"><span class="en">In Memoriam</span><span class="es">En Memoria</span></button>
+                <span class="mx-1 opacity-30">|</span>
+                <button id="treeZoomIn" class="bg-sand dark:bg-panel2 w-9 h-9 rounded-full border border-ink/10 dark:border-cream/10 font-bold hover:border-gold/60 transition" title="Zoom in">+</button>
+                <button id="treeZoomOut" class="bg-sand dark:bg-panel2 w-9 h-9 rounded-full border border-ink/10 dark:border-cream/10 font-bold hover:border-gold/60 transition" title="Zoom out">−</button>
+                <button id="treeFit" class="bg-sand dark:bg-panel2 px-4 h-9 rounded-full border border-ink/10 dark:border-cream/10 font-bold hover:border-gold/60 transition" title="Fit tree"><span class="en">Fit</span><span class="es">Ajustar</span></button>
+                <button id="treeClearHl" class="hidden bg-gold text-ink px-4 h-9 rounded-full font-bold hover:opacity-80 transition"><span class="en">✕ Clear highlight</span><span class="es">✕ Quitar resaltado</span></button>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-x-5 gap-y-1 mb-4 text-xs text-ink/60 dark:text-cream/50">
+                <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full inline-block" style="background:#FF3D8A"></span> Ortiz</span>
+                <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full inline-block" style="background:#35E0FF"></span> Lopez</span>
+                <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full inline-block" style="background:#FFC94A"></span> <span class="en">Both branches</span><span class="es">Ambas ramas</span></span>
+                <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full inline-block" style="background:#8b93a7"></span> <span class="en">Married in / other</span><span class="es">Político / otro</span></span>
+                <span class="inline-flex items-center gap-1.5">🕊️ <span class="en">In memoriam</span><span class="es">En memoria</span></span>
+                <span class="inline-flex items-center gap-1.5">★ <span class="en">Attending 2027</span><span class="es">Asiste 2027</span></span>
+            </div>
+
+            <div id="treeWrap">
+                <svg id="treeSvg" class="w-full h-full" width="100%" height="100%"><g id="treeG"></g></svg>
+                <div id="treeEmpty" class="hidden absolute inset-0 items-center justify-center text-center p-8 pointer-events-none">
+                    <div>
+                        <div class="text-5xl mb-4">🌱</div>
+                        <p class="font-display text-lg text-ink dark:text-cream mb-2"><span class="en">The tree starts with you!</span><span class="es">¡El árbol comienza contigo!</span></p>
+                        <p class="text-sm text-ink/60 dark:text-cream/50"><span class="en">Be the first to RSVP and plant the first branch.</span><span class="es">Sé el primero en confirmar y plantar la primera rama.</span></p>
+                    </div>
+                </div>
+            </div>
+            <p id="treeStats" class="text-center text-xs text-ink/50 dark:text-cream/40 mt-3"></p>
+        </div>
+
+        <!-- Profile modal -->
+        <div id="treeModal" class="hidden fixed inset-0 z-[60] tree-modal-bg items-center justify-center p-4">
+            <div class="bg-cream dark:bg-panel2 text-ink dark:text-cream rounded-2xl max-w-md w-full p-6 relative shadow-2xl border border-gold/30 max-h-[80vh] overflow-y-auto">
+                <button id="treeModalClose" class="absolute top-3 right-4 text-2xl leading-none hover:text-terra" aria-label="Close">×</button>
+                <div id="treeModalBody"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= RSVP ================= -->
     <section id="rsvp" class="py-24 scroll-mt-24 relative overflow-hidden bg-panel">
         <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 20%, rgba(255,61,138,.15), transparent 50%), radial-gradient(ellipse at 85% 80%, rgba(53,224,255,.12), transparent 50%);"></div>
@@ -1401,36 +1500,92 @@
 
             <form id="vacationRsvpForm" class="bg-cream/5 p-8 rounded-2xl backdrop-blur-sm border border-cream/15">
                 <h3 class="font-bold text-gold mb-4 border-b border-cream/15 pb-2">
-                    <span class="en">Primary Guest</span><span class="es">Invitado Principal</span>
+                    <span class="en">About You</span><span class="es">Sobre Ti</span>
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     <div>
-                        <label class="block text-sm mb-1 text-cream/80">
-                            <span class="en">First Name</span><span class="es">Nombre</span>
-                        </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">First Name *</span><span class="es">Nombre *</span></label>
+                        <input id="ft_first" type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                     </div>
                     <div>
-                        <label class="block text-sm mb-1 text-cream/80">
-                            <span class="en">Last Name</span><span class="es">Apellido</span>
-                        </label>
-                        <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Last Name *</span><span class="es">Apellido *</span></label>
+                        <input id="ft_last" type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Maiden Name</span><span class="es">Apellido de Soltera</span></label>
+                        <input id="ft_maiden" type="text" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                     </div>
                 </div>
 
-                <div id="additional-guests"></div>
+                <h3 class="font-bold text-gold mb-1 border-b border-cream/15 pb-2">
+                    <span class="en">Family Relationships</span><span class="es">Relaciones Familiares</span>
+                </h3>
+                <p class="text-xs text-cream/50 mb-4 mt-2">
+                    <span class="en">These grow the family tree — use full names (e.g. "Maria Ortiz") so we can connect everyone correctly.</span>
+                    <span class="es">Esto hace crecer el árbol familiar — usa nombres completos (ej. "Maria Ortiz") para conectar a todos correctamente.</span>
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Father's Full Name</span><span class="es">Nombre Completo del Padre</span></label>
+                        <input id="ft_father" type="text" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Mother's Full Name</span><span class="es">Nombre Completo de la Madre</span></label>
+                        <input id="ft_mother" type="text" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Spouse / Partner's Full Name</span><span class="es">Nombre Completo de Cónyuge/Pareja</span></label>
+                        <input id="ft_spouse" type="text" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                </div>
 
-                <div class="flex flex-wrap gap-3 mb-8 mt-4">
-                    <button type="button" onclick="addGuest('Adult')" class="text-sm bg-cream/10 hover:bg-cream/20 text-cream px-5 py-2 rounded-full transition border border-cream/20">
-                        <span class="en">+ Add Adult</span><span class="es">+ Agregar Adulto</span>
+                <div id="children-rows"></div>
+                <div id="sibling-rows"></div>
+                <div class="flex flex-wrap gap-3 mb-8 mt-2">
+                    <button type="button" onclick="addChildRow()" class="text-sm bg-cream/10 hover:bg-cream/20 text-cream px-5 py-2 rounded-full transition border border-cream/20">
+                        <span class="en">+ Add Child</span><span class="es">+ Agregar Hijo/a</span>
                     </button>
-                    <button type="button" onclick="addGuest('Child')" class="text-sm bg-cream/10 hover:bg-cream/20 text-cream px-5 py-2 rounded-full transition border border-cream/20">
-                        <span class="en">+ Add Child</span><span class="es">+ Agregar Niño/a</span>
+                    <button type="button" onclick="addSiblingRow()" class="text-sm bg-cream/10 hover:bg-cream/20 text-cream px-5 py-2 rounded-full transition border border-cream/20">
+                        <span class="en">+ Add Brother/Sister</span><span class="es">+ Agregar Hermano/a</span>
                     </button>
                 </div>
+
+                <h3 class="font-bold text-gold mb-4 border-b border-cream/15 pb-2">
+                    <span class="en">Attendance</span><span class="es">Asistencia</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Number of Adults</span><span class="es">Número de Adultos</span></label>
+                        <input id="ft_adults" type="number" min="0" value="1" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Number of Children</span><span class="es">Número de Niños</span></label>
+                        <input id="ft_kids" type="number" min="0" value="0" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1 text-cream/80"><span class="en">Attending the Reunion? *</span><span class="es">¿Asistirás a la Reunión? *</span></label>
+                        <select id="ft_attending" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                            <option value="Yes">Yes / Sí 🎉</option>
+                            <option value="No">No 😢</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm mb-1 text-cream/80"><span class="en">Additional family notes (private — never shown publicly)</span><span class="es">Notas familiares adicionales (privadas — nunca se muestran públicamente)</span></label>
+                    <textarea id="ft_notes" rows="2" class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra"></textarea>
+                </div>
+
+                <label class="flex items-start gap-3 mb-8 cursor-pointer">
+                    <input id="ft_permission" type="checkbox" checked class="mt-1 w-4 h-4 accent-pink-500">
+                    <span class="text-sm text-cream/80">
+                        <span class="en">I give permission for my name and family relationships to appear on the public family tree.</span>
+                        <span class="es">Doy permiso para que mi nombre y relaciones familiares aparezcan en el árbol familiar público.</span>
+                    </span>
+                </label>
 
                 <button type="submit" class="w-full bg-gradient-to-r from-terra via-gold to-sage text-ink font-bold py-4 rounded-full transition tracking-wider uppercase text-sm hover:opacity-90 shadow-lg shadow-terra/25">
-                    <span class="en">Submit RSVP</span><span class="es">Enviar Respuesta</span>
+                    <span class="en">Submit RSVP & Grow the Tree</span><span class="es">Enviar y Hacer Crecer el Árbol</span>
                 </button>
             </form>
         </div>
@@ -1493,42 +1648,77 @@
         mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
 
-        // --- Dynamic RSVP guests ---
-        function addGuest(type) {
-            const container = document.getElementById('additional-guests');
+        // ============ RSVP + FAMILY TREE BACKEND ============
+        // Paste your Google Apps Script Web App URL here (see FAMILY-TREE-SETUP.md in the repo).
+        // Until it's set, the tree shows a sample preview and RSVPs are not saved.
+        const GOOGLE_SHEET_URL = '';
+
+        // --- Dynamic RSVP relationship rows ---
+        function relRemoveBtn() {
+            return `<div class="md:col-span-2 pb-1">
+                <button type="button" onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:text-red-300 text-sm font-bold w-full text-left md:text-center">
+                    <span class="en">× Remove</span><span class="es">× Quitar</span>
+                </button></div>`;
+        }
+        function addChildRow() {
             const row = document.createElement('div');
-            row.className = 'grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end fade-in border-l-2 border-gold pl-3 ml-1';
-
-            const typeLabelEn = type === 'Adult' ? 'Adult' : 'Child';
-            const typeLabelEs = type === 'Adult' ? 'Adulto' : 'Niño/a';
-
+            row.className = 'child-row grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end fade-in border-l-2 border-gold pl-3 ml-1';
             row.innerHTML = `
                 <div class="md:col-span-5">
-                    <label class="block text-sm mb-1 text-cream/70">
-                        <span class="en">${typeLabelEn} First Name</span>
-                        <span class="es">Nombre (${typeLabelEs})</span>
-                    </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                    <label class="block text-sm mb-1 text-cream/70"><span class="en">Child First Name</span><span class="es">Nombre del Hijo/a</span></label>
+                    <input type="text" required class="c-first w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
                 </div>
                 <div class="md:col-span-5">
-                    <label class="block text-sm mb-1 text-cream/70">
-                        <span class="en">Last Name</span>
-                        <span class="es">Apellido</span>
-                    </label>
-                    <input type="text" required class="w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
-                </div>
-                <div class="md:col-span-2 pb-1">
-                    <button type="button" onclick="this.parentElement.parentElement.remove()" class="text-red-400 hover:text-red-300 text-sm font-bold w-full text-left md:text-center">
-                        <span class="en">× Remove</span><span class="es">× Quitar</span>
-                    </button>
-                </div>
-            `;
-            container.appendChild(row);
+                    <label class="block text-sm mb-1 text-cream/70"><span class="en">Child Last Name</span><span class="es">Apellido del Hijo/a</span></label>
+                    <input type="text" required class="c-last w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                </div>${relRemoveBtn()}`;
+            document.getElementById('children-rows').appendChild(row);
+        }
+        function addSiblingRow() {
+            const row = document.createElement('div');
+            row.className = 'sibling-row grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end fade-in border-l-2 border-sage pl-3 ml-1';
+            row.innerHTML = `
+                <div class="md:col-span-10">
+                    <label class="block text-sm mb-1 text-cream/70"><span class="en">Brother / Sister Full Name</span><span class="es">Nombre Completo del Hermano/a</span></label>
+                    <input type="text" required class="s-name w-full bg-cream/95 text-ink rounded-xl p-3 outline-none focus:ring-2 focus:ring-terra">
+                </div>${relRemoveBtn()}`;
+            document.getElementById('sibling-rows').appendChild(row);
         }
 
-        document.getElementById('vacationRsvpForm').addEventListener('submit', function(e) {
+        document.getElementById('vacationRsvpForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert(document.body.classList.contains('lang-es') ? '¡Gracias por confirmar tu asistencia!' : 'Thank you for your RSVP!');
+            const v = id => document.getElementById(id).value.trim();
+            const row = {
+                first: v('ft_first'), last: v('ft_last'), maiden: v('ft_maiden'),
+                father: v('ft_father'), mother: v('ft_mother'), spouse: v('ft_spouse'),
+                children: [...document.querySelectorAll('#children-rows .child-row')]
+                    .map(r => (r.querySelector('.c-first').value.trim() + ' ' + r.querySelector('.c-last').value.trim()).trim())
+                    .filter(Boolean).join('; '),
+                siblings: [...document.querySelectorAll('#sibling-rows .s-name')]
+                    .map(i => i.value.trim()).filter(Boolean).join('; '),
+                adults: v('ft_adults'), kids: v('ft_kids'),
+                attending: v('ft_attending'),
+                permission: document.getElementById('ft_permission').checked ? 'Yes' : 'No',
+                notes: v('ft_notes')
+            };
+            const isEs = document.body.classList.contains('lang-es');
+            if (GOOGLE_SHEET_URL) {
+                try {
+                    await fetch(GOOGLE_SHEET_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(row) });
+                    alert(isEs ? '¡Gracias por confirmar! Tu rama se agregó al árbol familiar. 🌳' : 'Thank you for your RSVP! Your branch was added to the family tree. 🌳');
+                } catch (err) {
+                    alert(isEs ? 'Algo salió mal — por favor intenta de nuevo.' : 'Something went wrong — please try again.');
+                    return;
+                }
+            } else {
+                alert(isEs ? '¡Gracias por confirmar tu asistencia!' : 'Thank you for your RSVP!');
+            }
+            if (row.permission === 'Yes') TREE.addRow(row); // tree updates instantly
+            this.reset();
+            document.getElementById('ft_adults').value = 1;
+            document.getElementById('ft_kids').value = 0;
+            document.getElementById('children-rows').innerHTML = '';
+            document.getElementById('sibling-rows').innerHTML = '';
         });
 
         // --- Dark Mode Toggle (dark is default — Vegas nights) ---
@@ -1567,6 +1757,436 @@
         }
         setupFilters('.filter-btn', '.attraction-card');
         setupFilters('.dine-filter-btn', '.dine-card');
+
+        // ============ FAMILY TREE ENGINE ============
+        const TREE = (() => {
+            const COLORS = { ortiz: '#FF3D8A', lopez: '#35E0FF', both: '#FFC94A', other: '#8b93a7' };
+            const NODE_W = 170, NODE_H = 58, SLOT_W = 200, ROW_H = 150;
+            const SAMPLE_ROWS = [
+                { first: 'Ramon', last: 'Ortiz', spouse: 'Maria Ortiz', deceased: 'Yes', permission: 'Yes' },
+                { first: 'Maria', last: 'Ortiz', spouse: 'Ramon Ortiz', attending: 'Yes', permission: 'Yes' },
+                { first: 'Hector', last: 'Lopez', spouse: 'Carmen Lopez', attending: 'Yes', permission: 'Yes' },
+                { first: 'Carmen', last: 'Lopez', spouse: 'Hector Lopez', deceased: 'Yes', permission: 'Yes' },
+                { first: 'Miguel', last: 'Ortiz', father: 'Ramon Ortiz', mother: 'Maria Ortiz', spouse: 'Sara Ortiz', children: 'Ava Ortiz; Leo Ortiz', attending: 'Yes', permission: 'Yes' },
+                { first: 'Sara', last: 'Ortiz', maiden: 'Lopez', father: 'Hector Lopez', mother: 'Carmen Lopez', spouse: 'Miguel Ortiz', children: 'Ava Ortiz; Leo Ortiz', attending: 'Yes', permission: 'Yes' },
+                { first: 'Jesse', last: 'Ortiz', father: 'Ramon Ortiz', mother: 'Maria Ortiz', attending: 'Yes', permission: 'Yes' },
+                { first: 'Elena', last: 'Rivera', maiden: 'Ortiz', father: 'Ramon Ortiz', mother: 'Maria Ortiz', spouse: 'Marco Rivera', children: 'Mia Rivera', attending: 'Yes', permission: 'Yes' },
+                { first: 'Luis', last: 'Lopez', father: 'Hector Lopez', mother: 'Carmen Lopez', attending: 'No', permission: 'Yes' }
+            ];
+
+            let rows = [], people = [], filter = 'all', query = '', hlSet = null, demo = false;
+            let vt = { x: 40, y: 40, k: 1 }; // view transform
+            const $ = id => document.getElementById(id);
+
+            const nrm = s => (s || '').toString().normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/\s+/g, ' ');
+            const splitList = s => (s || '').split(/[;,]/).map(x => x.trim()).filter(Boolean);
+            const yes = s => nrm(s) === 'yes' || nrm(s) === 'si' || nrm(s) === 'sí' || nrm(s) === 'true';
+
+            let byKey, nextId;
+            function reg(key, p) { if (key && !byKey.has(key)) byKey.set(key, p); }
+            function newPerson(name) {
+                const parts = name.trim().split(/\s+/);
+                const p = {
+                    id: 'p' + (nextId++), first: parts[0] || '', last: parts.slice(1).join(' '),
+                    display: name.trim(), maiden: '', parents: new Set(), children: new Set(),
+                    spouses: new Set(), siblings: new Set(), attending: false, deceased: false,
+                    photo: '', bio: '', branch: 'other', gen: 0, x: 0, y: 0
+                };
+                people.push(p);
+                return p;
+            }
+            function getOrCreate(name) {
+                const key = nrm(name);
+                if (!key) return null;
+                if (byKey.has(key)) return byKey.get(key);
+                const p = newPerson(name);
+                reg(key, p);
+                return p;
+            }
+
+            function build() {
+                people = []; byKey = new Map(); nextId = 1;
+                const visible = rows.filter(r => r.permission === undefined || yes(r.permission));
+                // pass 1: create submitters with full details + maiden aliases
+                for (const r of visible) {
+                    const name = (r.first + ' ' + r.last).trim();
+                    if (!name) continue;
+                    let p = byKey.get(nrm(name)) || newPerson(name);
+                    reg(nrm(name), p);
+                    p.first = r.first || p.first; p.last = r.last || p.last;
+                    p.display = name;
+                    if (r.maiden) { p.maiden = r.maiden; reg(nrm(r.first + ' ' + r.maiden), p); }
+                    if (yes(r.attending)) p.attending = true;
+                    if (yes(r.deceased)) p.deceased = true;
+                    if (r.photo) p.photo = r.photo;
+                    if (r.bio) p.bio = r.bio;
+                }
+                // pass 2: relationships
+                const link = (a, b, rel) => { if (a && b && a !== b) { a[rel].add(b); } };
+                for (const r of visible) {
+                    const p = byKey.get(nrm(r.first + ' ' + r.last));
+                    if (!p) continue;
+                    const dad = getOrCreate(r.father), mom = getOrCreate(r.mother), sp = getOrCreate(r.spouse);
+                    link(p, dad, 'parents'); link(dad, p, 'children');
+                    link(p, mom, 'parents'); link(mom, p, 'children');
+                    if (dad && mom) { link(dad, mom, 'spouses'); link(mom, dad, 'spouses'); }
+                    if (sp) { link(p, sp, 'spouses'); link(sp, p, 'spouses'); }
+                    for (const cn of splitList(r.children)) {
+                        const c = getOrCreate(cn);
+                        link(c, p, 'parents'); link(p, c, 'children');
+                        if (sp) { link(c, sp, 'parents'); link(sp, c, 'children'); }
+                    }
+                    for (const sn of splitList(r.siblings)) {
+                        const s = getOrCreate(sn);
+                        link(p, s, 'siblings'); link(s, p, 'siblings');
+                    }
+                }
+                // siblings inherit known parents
+                for (const p of people) for (const s of p.siblings) {
+                    if (p.parents.size && !s.parents.size) {
+                        for (const par of p.parents) { s.parents.add(par); par.children.add(s); }
+                    }
+                }
+                // generations (raise-only propagation)
+                let changed = true, iter = 0;
+                while (changed && iter++ < 80) {
+                    changed = false;
+                    for (const p of people) {
+                        for (const c of p.children) if (c.gen < p.gen + 1) { c.gen = p.gen + 1; changed = true; }
+                        for (const s of p.spouses) if (s.gen < p.gen) { s.gen = p.gen; changed = true; }
+                        for (const s of p.siblings) if (s.gen < p.gen) { s.gen = p.gen; changed = true; }
+                    }
+                }
+                // branches: multi-source BFS from Ortiz/Lopez seeds
+                const seeds = [];
+                for (const p of people) {
+                    const tags = new Set();
+                    if (nrm(p.last) === 'ortiz' || nrm(p.maiden) === 'ortiz') tags.add('ortiz');
+                    if (nrm(p.last) === 'lopez' || nrm(p.maiden) === 'lopez') tags.add('lopez');
+                    if (tags.size) { p._b = tags; seeds.push(p); } else p._b = null;
+                }
+                const q = [...seeds];
+                while (q.length) {
+                    const p = q.shift();
+                    for (const n of [...p.parents, ...p.children, ...p.spouses, ...p.siblings]) {
+                        if (!n._b) { n._b = new Set(p._b); q.push(n); }
+                    }
+                }
+                for (const p of people) {
+                    p.branch = !p._b ? 'other' : p._b.size > 1 ? 'both' : [...p._b][0];
+                    delete p._b;
+                }
+                refresh(true);
+            }
+
+            function passesFilter(p) {
+                switch (filter) {
+                    case 'ortiz': return p.branch === 'ortiz' || p.branch === 'both';
+                    case 'lopez': return p.branch === 'lopez' || p.branch === 'both';
+                    case 'attendees': return p.attending;
+                    case 'living': return !p.deceased;
+                    case 'deceased': return p.deceased;
+                    default: return true;
+                }
+            }
+
+            function layout(vis) {
+                const inSet = new Set(vis);
+                const gens = new Map();
+                for (const p of vis) { if (!gens.has(p.gen)) gens.set(p.gen, []); gens.get(p.gen).push(p); }
+                const genKeys = [...gens.keys()].sort((a, b) => a - b);
+                // build couple units per generation
+                const unitOf = new Map();
+                const unitsByGen = new Map();
+                for (const g of genKeys) {
+                    const units = []; const seen = new Set();
+                    const order = gens.get(g).sort((a, b) => (a.branch + a.display).localeCompare(b.branch + b.display));
+                    for (const p of order) {
+                        if (seen.has(p)) continue;
+                        const unit = [p]; seen.add(p);
+                        for (const s of p.spouses) if (inSet.has(s) && s.gen === g && !seen.has(s)) { unit.push(s); seen.add(s); }
+                        units.push(unit); unit.forEach(m => unitOf.set(m, unit));
+                    }
+                    unitsByGen.set(g, units);
+                }
+                // initial x: children grouped under earliest parent unit
+                for (let gi = 0; gi < genKeys.length; gi++) {
+                    const g = genKeys[gi];
+                    let units = unitsByGen.get(g);
+                    if (gi > 0) {
+                        units.sort((u1, u2) => {
+                            const px = u => {
+                                const ps = [...u[0].parents].filter(x => inSet.has(x) && unitOf.has(x));
+                                return ps.length ? Math.min(...ps.map(x => x._ux ?? 1e9)) : 1e9;
+                            };
+                            return px(u1) - px(u2);
+                        });
+                    }
+                    let x = 0;
+                    for (const u of units) { for (const m of u) { m._ux = x; x++; } }
+                }
+                // refine: center parents over children (2 passes), resolve overlaps
+                for (let pass = 0; pass < 2; pass++) {
+                    for (let gi = genKeys.length - 2; gi >= 0; gi--) {
+                        const units = unitsByGen.get(genKeys[gi]);
+                        for (const u of units) {
+                            const kids = new Set();
+                            u.forEach(m => m.children.forEach(c => { if (inSet.has(c)) kids.add(c); }));
+                            if (kids.size) {
+                                const mid = [...kids].reduce((s, c) => s + c._ux, 0) / kids.size - (u.length - 1) / 2;
+                                u.forEach((m, i) => m._ux = mid + i);
+                            }
+                        }
+                        units.sort((a, b) => a[0]._ux - b[0]._ux);
+                        let minX = -Infinity;
+                        for (const u of units) {
+                            if (u[0]._ux <= minX) { const shift = minX + 1 - u[0]._ux; u.forEach(m => m._ux += shift); }
+                            minX = u[u.length - 1]._ux;
+                        }
+                    }
+                }
+                for (const p of vis) { p.x = p._ux * SLOT_W; p.y = (p.gen - genKeys[0]) * ROW_H; delete p._ux; }
+            }
+
+            const escX = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            const trunc = (s, n) => s.length > n ? s.slice(0, n - 1) + '…' : s;
+
+            function draw(vis) {
+                const inSet = new Set(vis);
+                let edges = '', nodes = '', defs = '';
+                const drawnSpouse = new Set();
+                for (const p of vis) {
+                    // parent edges (from couple midpoint when both parents visible)
+                    const ps = [...p.parents].filter(x => inSet.has(x));
+                    if (ps.length) {
+                        const px = ps.reduce((s, x) => s + x.x, 0) / ps.length + NODE_W / 2;
+                        const py = ps[0].y + NODE_H;
+                        const cx = p.x + NODE_W / 2, cy = p.y;
+                        const my = (py + cy) / 2;
+                        edges += `<path class="tedge" data-for="${p.id}" stroke="${COLORS[p.branch]}" d="M${px},${py} C${px},${my} ${cx},${my} ${cx},${cy}"/>`;
+                    }
+                    for (const s of p.spouses) {
+                        if (!inSet.has(s)) continue;
+                        const k = [p.id, s.id].sort().join('-');
+                        if (drawnSpouse.has(k)) continue;
+                        drawnSpouse.add(k);
+                        const [a, b] = p.x < s.x ? [p, s] : [s, p];
+                        edges += `<line class="tedge spouse" data-for="${p.id} ${s.id}" stroke="#FFC94A" x1="${a.x + NODE_W}" y1="${a.y + NODE_H / 2}" x2="${b.x}" y2="${b.y + NODE_H / 2}"/>`;
+                    }
+                }
+                for (const p of vis) {
+                    const col = COLORS[p.branch];
+                    const initials = escX((p.first[0] || '') + (p.last[0] || '')).toUpperCase();
+                    let avatar;
+                    if (p.photo) {
+                        defs += `<clipPath id="clip-${p.id}"><circle cx="26" cy="${NODE_H / 2}" r="17"/></clipPath>`;
+                        avatar = `<image href="${escX(p.photo)}" x="9" y="${NODE_H / 2 - 17}" width="34" height="34" clip-path="url(#clip-${p.id})" preserveAspectRatio="xMidYMid slice"/><circle cx="26" cy="${NODE_H / 2}" r="17" fill="none" stroke="${col}" stroke-width="1.5"/>`;
+                    } else {
+                        avatar = `<circle cx="26" cy="${NODE_H / 2}" r="17" fill="${col}" opacity="0.9"/><text x="26" y="${NODE_H / 2 + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" style="fill:#fff">${initials}</text>`;
+                    }
+                    const sub = p.maiden ? `née ${trunc(escX(p.maiden), 12)}` : '';
+                    const badges = `${p.attending ? `<text x="${NODE_W - 12}" y="18" font-size="11" style="fill:#FFC94A">★</text>` : ''}${p.deceased ? `<text x="${NODE_W - 12}" y="${NODE_H - 8}" font-size="10">🕊️</text>` : ''}`;
+                    nodes += `<g class="tnode${p.deceased ? ' deceased' : ''}" data-id="${p.id}" transform="translate(${p.x},${p.y})">
+                        <rect class="card" width="${NODE_W}" height="${NODE_H}" rx="14" stroke="${col}"/>
+                        ${avatar}
+                        <text x="50" y="${sub ? 24 : NODE_H / 2 + 4}" font-size="12.5" font-weight="700">${trunc(escX(p.display), 16)}</text>
+                        ${sub ? `<text class="sub" x="50" y="40" font-size="10" font-style="italic">${sub}</text>` : ''}
+                        ${badges}
+                    </g>`;
+                }
+                $('treeG').innerHTML = `<defs>${defs}</defs>${edges}${nodes}`;
+                applyEmphasis();
+            }
+
+            function applyEmphasis() {
+                const q = nrm(query);
+                document.querySelectorAll('#treeG .tnode').forEach(n => {
+                    const p = people.find(x => x.id === n.dataset.id);
+                    let dim = false, hl = false;
+                    if (hlSet) { dim = !hlSet.has(p); hl = hlSet.has(p); }
+                    if (q.length >= 2) {
+                        const match = nrm(p.display).includes(q) || nrm(p.maiden).includes(q) || nrm(p.first + ' ' + p.maiden).includes(q);
+                        dim = dim || !match; if (match) hl = true;
+                    }
+                    n.classList.toggle('dim', dim);
+                    n.classList.toggle('hl', hl && (q.length >= 2 || !!hlSet));
+                });
+                document.querySelectorAll('#treeG .tedge').forEach(e => {
+                    const ids = e.dataset.for.split(' ');
+                    const dimmed = ids.some(id => document.querySelector(`#treeG .tnode[data-id="${id}"]`)?.classList.contains('dim'));
+                    e.classList.toggle('dim', dimmed);
+                });
+                $('treeClearHl').classList.toggle('hidden', !hlSet);
+            }
+
+            function refresh(fit) {
+                const vis = people.filter(passesFilter);
+                $('treeEmpty').classList.toggle('hidden', people.length > 0);
+                $('treeEmpty').classList.toggle('flex', people.length === 0);
+                if (vis.length) layout(vis);
+                draw(vis);
+                const att = people.filter(p => p.attending).length;
+                const esMode = document.body.classList.contains('lang-es');
+                $('treeStats').textContent = esMode
+                    ? `${people.length} familiares en el árbol · ${att} asistiendo en 2027 · ${vis.length} mostrados`
+                    : `${people.length} family members · ${att} attending 2027 · ${vis.length} shown`;
+                if (fit) fitView(vis);
+                applyTransform();
+            }
+
+            function fitView(vis) {
+                if (!vis || !vis.length) return;
+                const wrap = $('treeWrap');
+                const maxX = Math.max(...vis.map(p => p.x)) + NODE_W, maxY = Math.max(...vis.map(p => p.y)) + NODE_H;
+                const minX = Math.min(...vis.map(p => p.x)), minY = Math.min(...vis.map(p => p.y));
+                const w = wrap.clientWidth, h = wrap.clientHeight;
+                const k = Math.min(1.1, (w - 60) / Math.max(1, maxX - minX), (h - 60) / Math.max(1, maxY - minY));
+                vt = { k, x: (w - (maxX - minX) * k) / 2 - minX * k, y: (h - (maxY - minY) * k) / 2 - minY * k };
+            }
+            const applyTransform = () => { $('treeG').setAttribute('transform', `translate(${vt.x},${vt.y}) scale(${vt.k})`); };
+
+            // --- relatives helpers for profiles & highlighting ---
+            const collect = (p, rel) => {
+                const out = new Set(), q = [p];
+                while (q.length) { const c = q.shift(); for (const n of c[rel]) if (!out.has(n)) { out.add(n); q.push(n); } }
+                return out;
+            };
+            function lineage(p) {
+                const set = new Set([p, ...collect(p, 'parents'), ...collect(p, 'children'), ...p.spouses, ...p.siblings]);
+                return set;
+            }
+
+            function profileHTML(p) {
+                const esMode = document.body.classList.contains('lang-es');
+                const names = set => [...set].map(x => `<button class="prof-link underline decoration-dotted hover:text-terra" data-pid="${x.id}">${escX(x.display)}</button>`).join(', ') || '—';
+                const gp = new Set(); p.parents.forEach(pa => pa.parents.forEach(g => gp.add(g)));
+                const gc = new Set(); p.children.forEach(c => c.children.forEach(g => gc.add(g)));
+                const sibs = new Set(p.siblings);
+                people.forEach(o => { if (o !== p && o.parents.size && [...o.parents].some(x => p.parents.has(x))) sibs.add(o); });
+                const branchName = { ortiz: 'Ortiz', lopez: 'Lopez', both: 'Ortiz + Lopez', other: esMode ? 'Familia política' : 'Married in / other' }[p.branch];
+                const L = esMode
+                    ? { par: 'Padres', sp: 'Cónyuge', ch: 'Hijos', si: 'Hermanos', gp: 'Abuelos', gc: 'Nietos', br: 'Rama', att: '★ Asiste a la reunión 2027', mem: '🕊️ En memoria', hl: 'Resaltar su familia', nee: 'de soltera' }
+                    : { par: 'Parents', sp: 'Spouse', ch: 'Children', si: 'Siblings', gp: 'Grandparents', gc: 'Grandchildren', br: 'Branch', att: '★ Attending the 2027 reunion', mem: '🕊️ In memoriam', hl: 'Highlight their family', nee: 'née' };
+                const rowHtml = (label, val) => `<div class="py-1.5 border-b border-ink/5 dark:border-cream/10 text-sm"><span class="font-bold opacity-60 mr-2">${label}:</span>${val}</div>`;
+                return `
+                    <div class="flex items-center gap-4 mb-4">
+                        ${p.photo ? `<img src="${escX(p.photo)}" class="w-16 h-16 rounded-full object-cover border-2" style="border-color:${COLORS[p.branch]}">`
+                        : `<div class="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white" style="background:${COLORS[p.branch]}">${escX((p.first[0] || '') + (p.last[0] || '')).toUpperCase()}</div>`}
+                        <div>
+                            <h3 class="font-display text-xl font-600">${escX(p.display)}</h3>
+                            ${p.maiden ? `<p class="text-sm italic opacity-60">${L.nee} ${escX(p.maiden)}</p>` : ''}
+                            <span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded-full mt-1 text-ink" style="background:${COLORS[p.branch]}">${L.br}: ${branchName}</span>
+                        </div>
+                    </div>
+                    ${p.deceased ? `<p class="text-sm mb-2 opacity-70">${L.mem}</p>` : ''}
+                    ${p.attending ? `<p class="text-sm mb-2 text-gold font-bold">${L.att}</p>` : ''}
+                    ${p.bio ? `<p class="text-sm mb-3 opacity-80">${escX(p.bio)}</p>` : ''}
+                    ${rowHtml(L.par, names(p.parents))}
+                    ${rowHtml(L.sp, names(p.spouses))}
+                    ${rowHtml(L.ch, names(p.children))}
+                    ${rowHtml(L.si, names(sibs))}
+                    ${rowHtml(L.gp, names(gp))}
+                    ${rowHtml(L.gc, names(gc))}
+                    <button id="profHl" data-pid="${p.id}" class="mt-4 w-full bg-gradient-to-r from-terra to-gold text-ink font-bold py-2.5 rounded-full text-sm hover:opacity-90 transition">${L.hl}</button>`;
+            }
+            function openProfile(p) {
+                $('treeModalBody').innerHTML = profileHTML(p);
+                const m = $('treeModal');
+                m.classList.remove('hidden'); m.classList.add('flex');
+                $('profHl').onclick = () => { hlSet = lineage(p); closeModal(); applyEmphasis(); };
+                m.querySelectorAll('.prof-link').forEach(b => b.onclick = () => openProfile(people.find(x => x.id === b.dataset.pid)));
+            }
+            const closeModal = () => { const m = $('treeModal'); m.classList.add('hidden'); m.classList.remove('flex'); };
+
+            // --- events ---
+            function bindEvents() {
+                const wrap = $('treeWrap'), svg = $('treeSvg');
+                svg.addEventListener('click', e => {
+                    const g = e.target.closest('.tnode');
+                    if (g && !wrap._dragged) openProfile(people.find(x => x.id === g.dataset.id));
+                });
+                let drag = null, pinch = null;
+                wrap.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, vx: vt.x, vy: vt.y }; wrap._dragged = false; wrap.classList.add('grabbing'); });
+                window.addEventListener('pointermove', e => {
+                    if (!drag) return;
+                    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+                    if (Math.abs(dx) + Math.abs(dy) > 4) wrap._dragged = true;
+                    vt.x = drag.vx + dx; vt.y = drag.vy + dy; applyTransform();
+                });
+                window.addEventListener('pointerup', () => { drag = null; wrap.classList.remove('grabbing'); });
+                wrap.addEventListener('wheel', e => {
+                    e.preventDefault();
+                    const r = wrap.getBoundingClientRect();
+                    const mx = e.clientX - r.left, my = e.clientY - r.top;
+                    const k2 = Math.min(2.5, Math.max(0.15, vt.k * (e.deltaY < 0 ? 1.15 : 0.87)));
+                    vt.x = mx - (mx - vt.x) * k2 / vt.k; vt.y = my - (my - vt.y) * k2 / vt.k; vt.k = k2;
+                    applyTransform();
+                }, { passive: false });
+                wrap.addEventListener('touchstart', e => { if (e.touches.length === 2) pinch = { d: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), k: vt.k }; });
+                wrap.addEventListener('touchmove', e => {
+                    if (pinch && e.touches.length === 2) {
+                        e.preventDefault();
+                        const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                        vt.k = Math.min(2.5, Math.max(0.15, pinch.k * d / pinch.d)); applyTransform();
+                    }
+                }, { passive: false });
+                wrap.addEventListener('touchend', () => pinch = null);
+                $('treeZoomIn').onclick = () => { vt.k = Math.min(2.5, vt.k * 1.25); applyTransform(); };
+                $('treeZoomOut').onclick = () => { vt.k = Math.max(0.15, vt.k * 0.8); applyTransform(); };
+                $('treeFit').onclick = () => { fitView(people.filter(passesFilter)); applyTransform(); };
+                $('treeClearHl').onclick = () => { hlSet = null; applyEmphasis(); };
+                $('treeSearch').addEventListener('input', e => { query = e.target.value; applyEmphasis(); });
+                $('treeModalClose').onclick = closeModal;
+                $('treeModal').addEventListener('click', e => { if (e.target === $('treeModal')) closeModal(); });
+                document.querySelectorAll('.tree-filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.tree-filter-btn').forEach(b => {
+                            b.classList.remove('bg-gradient-to-r', 'from-terra', 'to-gold', 'text-ink', 'font-bold', 'active');
+                            b.classList.add('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
+                        });
+                        btn.classList.remove('bg-sand', 'dark:bg-panel2', 'border', 'border-ink/10', 'dark:border-cream/10');
+                        btn.classList.add('bg-gradient-to-r', 'from-terra', 'to-gold', 'text-ink', 'font-bold', 'active');
+                        filter = btn.dataset.tfilter;
+                        refresh(true);
+                    });
+                });
+            }
+
+            function showBanner(en, es) {
+                const b = $('treeBanner');
+                b.innerHTML = `<span class="en">${en}</span><span class="es">${es}</span>`;
+                b.classList.remove('hidden');
+            }
+
+            async function init() {
+                bindEvents();
+                if (GOOGLE_SHEET_URL) {
+                    try {
+                        const res = await fetch(GOOGLE_SHEET_URL + (GOOGLE_SHEET_URL.includes('?') ? '&' : '?') + 'v=' + Date.now());
+                        const data = await res.json();
+                        rows = data.people || [];
+                    } catch (err) {
+                        rows = [];
+                        showBanner('⚠️ Could not load the family tree right now — new RSVPs are still being saved.',
+                                   '⚠️ No se pudo cargar el árbol en este momento — las confirmaciones sí se están guardando.');
+                    }
+                } else {
+                    demo = true; rows = [...SAMPLE_ROWS];
+                    showBanner('🌱 Sample preview — connect Google Sheets (FAMILY-TREE-SETUP.md) and the tree will build itself from real RSVPs.',
+                               '🌱 Vista de muestra — conecta Google Sheets (FAMILY-TREE-SETUP.md) y el árbol se construirá con confirmaciones reales.');
+                }
+                build();
+            }
+
+            function addRow(row) {
+                if (demo) { demo = false; rows = []; $('treeBanner').classList.add('hidden'); }
+                rows.push(row);
+                build();
+            }
+
+            init();
+            return { addRow };
+        })();
 
         // --- Scroll reveal ---
         const observer = new IntersectionObserver((entries) => {
