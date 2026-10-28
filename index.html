@@ -125,36 +125,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ---------- Family Tree ---------- */
+        /* ---------- Family Tree (artistic night-sky tree) ---------- */
         #treeWrap {
             position: relative; height: 72vh; min-height: 500px;
             border-radius: 1rem; overflow: hidden; touch-action: none; cursor: grab;
-            background:
-                radial-gradient(ellipse at 25% 15%, rgba(255, 61, 138, 0.07), transparent 55%),
-                radial-gradient(ellipse at 78% 85%, rgba(53, 224, 255, 0.06), transparent 55%),
-                #F5F2EA;
-            border: 1px solid rgba(11, 13, 20, 0.08);
+            background: linear-gradient(180deg, #f8905e 0%, #d85a8a 36%, #5b2a6e 70%, #2b1a3d 100%);
+            border: 1px solid rgba(11, 13, 20, 0.15);
         }
         .dark #treeWrap {
-            background:
-                radial-gradient(ellipse at 25% 15%, rgba(255, 61, 138, 0.1), transparent 55%),
-                radial-gradient(ellipse at 78% 85%, rgba(53, 224, 255, 0.08), transparent 55%),
-                #10131f;
+            background: linear-gradient(180deg, #37205f 0%, #231544 40%, #130f24 76%, #0B0D14 100%);
             border-color: rgba(245, 242, 234, 0.08);
         }
+        #treeWrap::before { /* stars */
+            content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.35;
+            background-image:
+                radial-gradient(1.5px 1.5px at 8% 12%, #fff, transparent),
+                radial-gradient(1px 1px at 22% 28%, #ffe9c9, transparent),
+                radial-gradient(2px 2px at 34% 8%, #fff, transparent),
+                radial-gradient(1px 1px at 48% 22%, #cfeaff, transparent),
+                radial-gradient(1.5px 1.5px at 61% 11%, #fff, transparent),
+                radial-gradient(1px 1px at 72% 30%, #ffe9c9, transparent),
+                radial-gradient(2px 2px at 84% 16%, #fff, transparent),
+                radial-gradient(1px 1px at 93% 34%, #cfeaff, transparent),
+                radial-gradient(1.2px 1.2px at 15% 45%, #fff, transparent),
+                radial-gradient(1px 1px at 55% 40%, #ffe9c9, transparent);
+        }
+        .dark #treeWrap::before { opacity: 0.85; }
+        #treeWrap::after { /* moon glow */
+            content: ''; position: absolute; width: 230px; height: 230px; right: -50px; top: -50px;
+            border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 201, 74, 0.35), transparent 65%);
+        }
         #treeWrap.grabbing { cursor: grabbing; }
+        .ff { /* fireflies */
+            position: absolute; width: 5px; height: 5px; border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, #FFE9A8 0%, #FFC94A 60%, transparent 100%);
+            box-shadow: 0 0 8px 2px rgba(255, 201, 74, 0.55); opacity: 0.8;
+            animation: ffdrift var(--dur, 10s) ease-in-out var(--delay, 0s) infinite alternate;
+        }
+        @keyframes ffdrift {
+            0% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+            50% { opacity: 0.9; }
+            100% { transform: translate(var(--dx, 30px), var(--dy, -40px)) scale(1.15); opacity: 0.35; }
+        }
         .tnode { cursor: pointer; }
-        .tnode rect.card { fill: #FFFFFF; stroke-width: 2; transition: opacity .3s ease; }
-        .dark .tnode rect.card { fill: #1B2036; }
-        .tnode text { font-family: 'Outfit', sans-serif; fill: #0B0D14; pointer-events: none; }
-        .dark .tnode text { fill: #F5F2EA; }
-        .tnode text.sub { fill: rgba(11, 13, 20, 0.55); }
-        .dark .tnode text.sub { fill: rgba(245, 242, 234, 0.5); }
-        .tnode.dim, .tedge.dim { opacity: 0.12; }
-        .tnode.hl rect.card { filter: drop-shadow(0 0 10px rgba(255, 201, 74, 0.9)); stroke-width: 3; }
-        .tedge { fill: none; stroke-width: 2; opacity: 0.6; }
-        .tedge.spouse { opacity: 0.9; stroke-width: 2.5; }
-        .tnode.deceased rect.card { stroke-dasharray: 5 3; }
+        .tnode text { font-family: 'Outfit', sans-serif; fill: #F5F2EA; pointer-events: none; }
+        .tnode .tname { text-shadow: 0 1px 6px rgba(11, 13, 20, 0.9); }
+        .tnode .tsub { fill: rgba(245, 242, 234, 0.6); }
+        .tnode .ring { transition: stroke-width 0.25s ease; }
+        .tnode.deceased .ring { stroke-dasharray: 5 4; }
+        .tnode.hl .ring { stroke-width: 4.5; }
+        .tnode.hl .halo { opacity: 0.5; }
+        .tnode.dim, .tedge.dim { opacity: 0.1; }
+        .tedge { fill: none; }
+        text.tedge { fill: #FF3D8A; stroke: none; }
+        .ttrunk { pointer-events: none; }
+        @media (prefers-reduced-motion: reduce) { .ff { animation: none; opacity: 0.4; } }
         .tree-modal-bg { background: rgba(11, 13, 20, 0.7); backdrop-filter: blur(4px); }
 
         /* Image fallback tiles */
@@ -1761,7 +1787,8 @@
         // ============ FAMILY TREE ENGINE ============
         const TREE = (() => {
             const COLORS = { ortiz: '#FF3D8A', lopez: '#35E0FF', both: '#FFC94A', other: '#8b93a7' };
-            const NODE_W = 170, NODE_H = 58, SLOT_W = 200, ROW_H = 150;
+            const LIGHT = { ortiz: '#FF8AB9', lopez: '#9BEEFF', both: '#FFE09A', other: '#B9BFCE' };
+            const NODE_W = 110, NODE_H = 95, SLOT_W = 170, ROW_H = 175;
             const SAMPLE_ROWS = [
                 { first: 'Ramon', last: 'Ortiz', spouse: 'Maria Ortiz', deceased: 'Yes', permission: 'Yes' },
                 { first: 'Maria', last: 'Ortiz', spouse: 'Ramon Ortiz', attending: 'Yes', permission: 'Yes' },
@@ -1945,7 +1972,8 @@
                         }
                     }
                 }
-                for (const p of vis) { p.x = p._ux * SLOT_W; p.y = (p.gen - genKeys[0]) * ROW_H; delete p._ux; }
+                const gTop = genKeys[genKeys.length - 1];
+                for (const p of vis) { p.x = p._ux * SLOT_W; p.y = (gTop - p.gen) * ROW_H; delete p._ux; }
             }
 
             const escX = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1953,17 +1981,57 @@
 
             function draw(vis) {
                 const inSet = new Set(vis);
-                let edges = '', nodes = '', defs = '';
+                // branch thickness grows with the size of the subtree it carries
+                const dmemo = new Map();
+                const ndesc = p => {
+                    if (dmemo.has(p)) return dmemo.get(p);
+                    dmemo.set(p, 0);
+                    let n = 0;
+                    for (const c of p.children) if (inSet.has(c)) n += 1 + ndesc(c);
+                    dmemo.set(p, n);
+                    return n;
+                };
+                const bw = p => Math.min(9, 2.4 + Math.sqrt(ndesc(p) * 2) * 1.05);
+                const branch = (d, w, col, cls, dataFor) =>
+                    `<path class="${cls} bhalo" ${dataFor} d="${d}" stroke="${col}" stroke-width="${w + 5}" filter="url(#tglow)" opacity="0.3" fill="none" stroke-linecap="round"/>` +
+                    `<path class="${cls}" ${dataFor} d="${d}" stroke="${col}" stroke-width="${w}" fill="none" stroke-linecap="round" opacity="0.9"/>`;
+
+                let defs = `<filter id="tglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4"/></filter>`;
+                for (const k in COLORS) {
+                    defs += `<radialGradient id="av-${k}" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="${LIGHT[k]}"/><stop offset="100%" stop-color="${COLORS[k]}"/></radialGradient>`;
+                }
+
+                let scenery = '', edges = '', nodes = '';
+
+                // --- ground, roots & trunk: one glowing tree ---
+                if (vis.length) {
+                    const bottomY = Math.max(...vis.map(p => p.y));
+                    const bottomFolk = vis.filter(p => p.y === bottomY);
+                    const tx = bottomFolk.reduce((s, p) => s + p.x, 0) / bottomFolk.length;
+                    const baseY = bottomY + 150;
+                    const spread = Math.max(130, (Math.max(...vis.map(p => p.x)) - Math.min(...vis.map(p => p.x))) / 2 + 70);
+                    scenery += `<ellipse cx="${tx}" cy="${baseY + 12}" rx="${spread}" ry="17" fill="#FFC94A" opacity="0.08"/>`;
+                    scenery += `<ellipse cx="${tx}" cy="${baseY + 9}" rx="${spread * 0.55}" ry="10" fill="#FFC94A" opacity="0.13"/>`;
+                    scenery += branch(`M${tx},${baseY + 4} L${tx},${baseY - 58}`, 15, '#FFC94A', 'ttrunk', '');
+                    scenery += branch(`M${tx},${baseY} Q${tx - 36},${baseY + 7} ${tx - 66},${baseY + 13}`, 5, '#FFC94A', 'ttrunk', '');
+                    scenery += branch(`M${tx},${baseY} Q${tx + 36},${baseY + 7} ${tx + 66},${baseY + 13}`, 5, '#FFC94A', 'ttrunk', '');
+                    scenery += branch(`M${tx},${baseY + 2} Q${tx - 14},${baseY + 10} ${tx - 24},${baseY + 16}`, 3.5, '#FFC94A', 'ttrunk', '');
+                    for (const p of bottomFolk) {
+                        scenery += branch(`M${tx},${baseY - 34} C${tx},${baseY - 98} ${p.x},${p.y + 112} ${p.x},${p.y + 30}`, 7, '#FFC94A', 'ttrunk', '');
+                    }
+                }
+
+                // --- organic parent->child branches (growing upward) ---
                 const drawnSpouse = new Set();
                 for (const p of vis) {
-                    // parent edges (from couple midpoint when both parents visible)
                     const ps = [...p.parents].filter(x => inSet.has(x));
                     if (ps.length) {
-                        const px = ps.reduce((s, x) => s + x.x, 0) / ps.length + NODE_W / 2;
-                        const py = ps[0].y + NODE_H;
-                        const cx = p.x + NODE_W / 2, cy = p.y;
-                        const my = (py + cy) / 2;
-                        edges += `<path class="tedge" data-for="${p.id}" stroke="${COLORS[p.branch]}" d="M${px},${py} C${px},${my} ${cx},${my} ${cx},${cy}"/>`;
+                        const px = ps.reduce((s, x) => s + x.x, 0) / ps.length;
+                        const py = ps[0].y;
+                        const rise = py - p.y;
+                        const bow = Math.max(-46, Math.min(46, (p.x - px) * 0.22));
+                        const d = `M${px},${py - 26} C${px + bow},${py - rise * 0.45} ${p.x - bow},${p.y + rise * 0.45} ${p.x},${p.y + 27}`;
+                        edges += branch(d, bw(p), COLORS[p.branch], 'tedge', `data-for="${p.id}"`);
                     }
                     for (const s of p.spouses) {
                         if (!inSet.has(s)) continue;
@@ -1971,30 +2039,36 @@
                         if (drawnSpouse.has(k)) continue;
                         drawnSpouse.add(k);
                         const [a, b] = p.x < s.x ? [p, s] : [s, p];
-                        edges += `<line class="tedge spouse" data-for="${p.id} ${s.id}" stroke="#FFC94A" x1="${a.x + NODE_W}" y1="${a.y + NODE_H / 2}" x2="${b.x}" y2="${b.y + NODE_H / 2}"/>`;
+                        const mid = (a.x + b.x) / 2;
+                        edges += `<path class="tedge spouse" data-for="${p.id} ${s.id}" d="M${a.x + 24},${a.y + 10} Q${mid},${a.y + 42} ${b.x - 24},${b.y + 10}" stroke="#FFC94A" stroke-width="2" fill="none" opacity="0.8"/>`;
+                        edges += `<text class="tedge" data-for="${p.id} ${s.id}" x="${mid}" y="${a.y + 36}" text-anchor="middle" font-size="12">\u2665</text>`;
                     }
                 }
+
+                // --- glowing orb nodes ---
                 for (const p of vis) {
                     const col = COLORS[p.branch];
-                    const initials = escX((p.first[0] || '') + (p.last[0] || '')).toUpperCase();
+                    const initials = escX(((p.first[0] || '') + (p.last[0] || '')).toUpperCase());
                     let avatar;
                     if (p.photo) {
-                        defs += `<clipPath id="clip-${p.id}"><circle cx="26" cy="${NODE_H / 2}" r="17"/></clipPath>`;
-                        avatar = `<image href="${escX(p.photo)}" x="9" y="${NODE_H / 2 - 17}" width="34" height="34" clip-path="url(#clip-${p.id})" preserveAspectRatio="xMidYMid slice"/><circle cx="26" cy="${NODE_H / 2}" r="17" fill="none" stroke="${col}" stroke-width="1.5"/>`;
+                        defs += `<clipPath id="clip-${p.id}"><circle cx="0" cy="0" r="22"/></clipPath>`;
+                        avatar = `<circle r="24" fill="#10131f"/><image href="${escX(p.photo)}" x="-22" y="-22" width="44" height="44" clip-path="url(#clip-${p.id})" preserveAspectRatio="xMidYMid slice"/>`;
                     } else {
-                        avatar = `<circle cx="26" cy="${NODE_H / 2}" r="17" fill="${col}" opacity="0.9"/><text x="26" y="${NODE_H / 2 + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" style="fill:#fff">${initials}</text>`;
+                        avatar = `<circle r="22" fill="url(#av-${p.branch})"/><text y="5" text-anchor="middle" font-size="14" font-weight="700" style="fill:#fff">${initials}</text>`;
                     }
-                    const sub = p.maiden ? `née ${trunc(escX(p.maiden), 12)}` : '';
-                    const badges = `${p.attending ? `<text x="${NODE_W - 12}" y="18" font-size="11" style="fill:#FFC94A">★</text>` : ''}${p.deceased ? `<text x="${NODE_W - 12}" y="${NODE_H - 8}" font-size="10">🕊️</text>` : ''}`;
+                    const sub = p.maiden ? `n\u00e9e ${trunc(escX(p.maiden), 14)}` : '';
                     nodes += `<g class="tnode${p.deceased ? ' deceased' : ''}" data-id="${p.id}" transform="translate(${p.x},${p.y})">
-                        <rect class="card" width="${NODE_W}" height="${NODE_H}" rx="14" stroke="${col}"/>
+                        <rect class="hit" x="-55" y="-36" width="110" height="102" fill="transparent"/>
+                        <circle class="halo" r="31" fill="${col}" opacity="0.16" filter="url(#tglow)"/>
                         ${avatar}
-                        <text x="50" y="${sub ? 24 : NODE_H / 2 + 4}" font-size="12.5" font-weight="700">${trunc(escX(p.display), 16)}</text>
-                        ${sub ? `<text class="sub" x="50" y="40" font-size="10" font-style="italic">${sub}</text>` : ''}
-                        ${badges}
+                        <circle class="ring" r="25" fill="none" stroke="${col}" stroke-width="2.5"/>
+                        ${p.attending ? `<text x="17" y="-19" font-size="12" style="fill:#FFC94A">\u2605</text>` : ''}
+                        ${p.deceased ? `<text x="-31" y="-19" font-size="11">\ud83d\udd4a\ufe0f</text>` : ''}
+                        <text class="tname" y="43" text-anchor="middle" font-size="12" font-weight="700">${trunc(escX(p.display), 17)}</text>
+                        ${sub ? `<text class="tsub" y="57" text-anchor="middle" font-size="9.5" font-style="italic">${sub}</text>` : ''}
                     </g>`;
                 }
-                $('treeG').innerHTML = `<defs>${defs}</defs>${edges}${nodes}`;
+                $('treeG').innerHTML = `<defs>${defs}</defs>${scenery}${edges}${nodes}`;
                 applyEmphasis();
             }
 
@@ -2037,8 +2111,8 @@
             function fitView(vis) {
                 if (!vis || !vis.length) return;
                 const wrap = $('treeWrap');
-                const maxX = Math.max(...vis.map(p => p.x)) + NODE_W, maxY = Math.max(...vis.map(p => p.y)) + NODE_H;
-                const minX = Math.min(...vis.map(p => p.x)), minY = Math.min(...vis.map(p => p.y));
+                const maxX = Math.max(...vis.map(p => p.x)) + 95, maxY = Math.max(...vis.map(p => p.y)) + 185;
+                const minX = Math.min(...vis.map(p => p.x)) - 95, minY = Math.min(...vis.map(p => p.y)) - 55;
                 const w = wrap.clientWidth, h = wrap.clientHeight;
                 const k = Math.min(1.1, (w - 60) / Math.max(1, maxX - minX), (h - 60) / Math.max(1, maxY - minY));
                 vt = { k, x: (w - (maxX - minX) * k) / 2 - minX * k, y: (h - (maxY - minY) * k) / 2 - minY * k };
@@ -2158,8 +2232,24 @@
                 b.classList.remove('hidden');
             }
 
+            function makeFireflies() {
+                const wrap = $('treeWrap');
+                for (let i = 0; i < 14; i++) {
+                    const f = document.createElement('div');
+                    f.className = 'ff';
+                    f.style.left = (4 + Math.random() * 92).toFixed(1) + '%';
+                    f.style.top = (8 + Math.random() * 84).toFixed(1) + '%';
+                    f.style.setProperty('--dur', (7 + Math.random() * 8).toFixed(1) + 's');
+                    f.style.setProperty('--delay', (-Math.random() * 10).toFixed(1) + 's');
+                    f.style.setProperty('--dx', ((Math.random() - 0.5) * 90).toFixed(0) + 'px');
+                    f.style.setProperty('--dy', ((Math.random() - 0.5) * 70).toFixed(0) + 'px');
+                    wrap.appendChild(f);
+                }
+            }
+
             async function init() {
                 bindEvents();
+                makeFireflies();
                 if (GOOGLE_SHEET_URL) {
                     try {
                         const res = await fetch(GOOGLE_SHEET_URL + (GOOGLE_SHEET_URL.includes('?') ? '&' : '?') + 'v=' + Date.now());
